@@ -6,10 +6,15 @@ import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import IosShareIcon from '@mui/icons-material/IosShare';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import StarIcon from '@mui/icons-material/Star';
+import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
+import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
+import ReviewStars from "../Components/ReviewStars";
+import RelatedTags from "../Components/RelatedTags";
 export default function CelebrityDetail(){
     const id= "621f265b58678b08aa0e0c4e"
     const [celeb,setCeleb]= useState(null)
     const [isLoading, setIsLoading]= useState(true)
+    const [price,setPrice]= useState(null)
     const fetchData = () => {
         return axios.get(`https://cameo-backend.herokuapp.com/`)
     }
@@ -17,9 +22,9 @@ export default function CelebrityDetail(){
         try {
             setIsLoading(true);
             const {data} = await fetchData();
-            console.log(data[0])
             setCeleb(data[0])
-            setIsLoading(false);  
+            setIsLoading(false);
+            setPrice(celeb.price.personal)
         }
         catch (error) {
             console.log(error);
@@ -32,7 +37,7 @@ export default function CelebrityDetail(){
         <>
         {isLoading ?
             <div>Loading...</div>:
-        <div style={{backgroundColor:'rgb(16,16,16)',height:'2000px',width:'100%'}}>
+        <div style={{backgroundColor:'rgb(16,16,16)',width:'100%'}}>
             <div style={{position:'fixed',top:0,width:'100%'}}>
             <Navbar/>
             </div>
@@ -47,18 +52,18 @@ export default function CelebrityDetail(){
                     </div>
                     <div className={styles.buttonSection}>
                         <div style={{marginRight:'12px'}}>
-                            <div style={{display:'flex',paddingLeft:'16px',paddingRight:'16px',backgroundColor:'rgba(43,38,43,1.00)',height:'40px',borderRadius:'8px',cursor:'pointer'}}>
+                            <div className={styles.fanClubButton}>
                                 <div style={{paddingTop:'10px',paddingBottom:'10px',marginRight:'4px'}}><StarBorderOutlinedIcon fontSize="small"/></div>
                                 <div style={{fontWeight:'700',fontSize:'16px',paddingTop:'7px',paddingBottom:'7px'}}>Join Fan Club</div>
                             </div>
                         </div>
                         <div style={{marginRight:'12px'}}>
-                            <div style={{padding:'10px 16px',backgroundColor:'rgba(43,38,43,1.00)',borderRadius:'8px',cursor:'pointer'}}>
+                            <div className={styles.iconBtn}>
                                 <IosShareIcon fontSize="small"/>
                             </div>
                         </div>
                         <div>
-                        <div style={{padding:'10px 16px',backgroundColor:'rgba(43,38,43,1.00)',borderRadius:'8px',cursor:'pointer'}}>
+                        <div className={styles.iconBtn}>
                                 <BookmarkBorderIcon fontSize="small"/>
                             </div>
                         </div>
@@ -100,6 +105,79 @@ export default function CelebrityDetail(){
                         <div style={{marginTop:'22px'}}>
                             <div style={{marginBottom:'16px',color:'white',fontWeight:'700',fontSize:'18px'}}>Choose an option</div>
                         </div>
+                        <div className={styles.priceDiv} onClick={()=>{setPrice(celeb.price.personal)}}>
+                            <div style={{display:'flex',justifyContent:'space-between'}}>
+                                <div style={{display:'flex'}}>
+                                    <div style={{marginTop:'4px',marginRight:'8px'}}><PeopleAltOutlinedIcon style={{fontSize:'14px'}}/></div>
+                                    <div>
+                                        <div style={{marginBottom:'8px',color:'white',fontWeight:'700',fontSize:'17px'}}>Personal use</div>
+                                        <div style={{fontSize:'14px',color:'rgba(190,187,191,1.00)'}}>Personalized video for you or someone else</div>
+                                    </div>
+                                </div>
+                                <div style={{color:'white',fontWeight:'700',fontSize:'17px'}}>{`₹${celeb.price.personal}`}</div>
+                            </div>
+                        </div>
+                        <div className={styles.priceDiv} onClick={()=>{setPrice(celeb.price.buisness)}}>
+                            <div style={{display:'flex',justifyContent:'space-between'}}>
+                                <div style={{display:'flex'}}>
+                                    <div style={{marginTop:'4px',marginRight:'8px'}}><FolderOpenOutlinedIcon style={{fontSize:'14px'}}/></div>
+                                    <div>
+                                        <div style={{marginBottom:'8px',color:'white',fontWeight:'700',fontSize:'17px'}}>For business</div>
+                                        <div style={{fontSize:'14px',color:'rgba(190,187,191,1.00)'}}>Engaging video content for your company, customers, or employees</div>
+                                    </div>
+                                </div>
+                                <div style={{color:'white',fontWeight:'700',fontSize:'17px'}}>{`₹${celeb.price.buisness}`}</div>
+                            </div>
+                        </div>
+                        <div style={{backgroundColor:'rgb(255, 3, 124)',borderRadius:'10px',textAlign:'center',paddingTop:'16px',paddingBottom:'16px',cursor:'pointer'}}>
+                            {price?
+                            <div style={{fontSize:'17px',fontWeight:'700'}}>Book now ₹{price}</div>:
+                            <div style={{fontSize:'17px',fontWeight:'700'}}>Book now</div>}
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.reviewSection}>
+                    <div style={{display:'flex',justifyContent:'space-between',marginBottom:'16px'}}>
+                        <div style={{color:'white',fontSize:'20px',fontWeight:'700'}}>Reviews</div>
+                        <div style={{color:'rgb(131, 240, 255)',fontWeight:'400',fontSize:'16px',cursor:'pointer'}}>See all {celeb.reviews.length} reviews</div>
+                    </div>
+                    <div className={styles.reviewDiv}>
+                        <div style={{display:'grid',gridTemplateColumns: '140px auto',marginBottom:'12px'}}>
+                            <div className={styles.reviewImg}>
+                                <div style={{fontWeight:'700',fontSize:'14px',color:'white'}}>{celeb.reviews[0].reviewer_name[0]}</div>
+                            </div>
+                            <ReviewStars number={celeb.reviews[0].stars}/>
+                        </div>
+                        <div style={{display:'grid',gridTemplateColumns: '140px auto'}}>
+                            <div>
+                                <div style={{fontWeight:'500',fontSize:'14px',color:'white'}}>{celeb.reviews[0].reviewer_name}</div>
+                                <div style={{fontWeight:'500',fontSize:'13px',color:'rgba(190,187,191,1.00)'}}>{String(celeb.reviews[0].date).slice(0,10)}</div>
+                            </div>
+                            <div style={{fontWeight:'500',fontSize:'14px',color:'rgba(190,187,191,1.00)'}}>{celeb.reviews[0].comments}</div>
+                        </div>
+                    </div>
+                    <div className={styles.reviewDiv}>
+                    <div style={{display:'grid',gridTemplateColumns: '140px auto',marginBottom:'12px'}}>
+                            <div className={styles.reviewImg}>
+                                <div style={{fontWeight:'700',fontSize:'14px',color:'white'}}>{celeb.reviews[1].reviewer_name[0]}</div>
+                            </div>
+                            <ReviewStars number={celeb.reviews[1].stars}/>
+                        </div>
+                        <div style={{display:'grid',gridTemplateColumns: '140px auto'}}>
+                            <div>
+                                <div style={{fontWeight:'500',fontSize:'14px',color:'white'}}>{celeb.reviews[1].reviewer_name}</div>
+                                <div style={{fontWeight:'500',fontSize:'13px',color:'rgba(190,187,191,1.00)'}}>{String(celeb.reviews[1].date).slice(0,10)}</div>
+                            </div>
+                            <div style={{fontWeight:'500',fontSize:'14px',color:'rgba(190,187,191,1.00)'}}>{celeb.reviews[1].comments}</div>
+                        </div>
+                    </div>
+                </div>
+                <div className={styles.relatedSection}>
+                    <div style={{color:'white',fontSize:'20px',fontWeight:'700'}}>Related categories</div>
+                    <div style={{marginTop:'14px'}}>
+                        {celeb.tags.map((item)=>{
+                           return <RelatedTags tag={item}/>
+                        })}
                     </div>
                 </div>
             </div>
