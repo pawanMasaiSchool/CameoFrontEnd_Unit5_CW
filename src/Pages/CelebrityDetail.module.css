@@ -1,0 +1,13 @@
+.topbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    color:white
+}
+.buttonSection{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

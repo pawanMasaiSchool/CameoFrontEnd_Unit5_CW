@@ -11,7 +11,7 @@ const Navbar = () => {
             height:"60px",
             width:"100%",
             margin:"auto",
-            background:"black",
+            background:"rgb(16,16,16)",
             display:"flex",
             flexDirection:"row",
             color:"white",

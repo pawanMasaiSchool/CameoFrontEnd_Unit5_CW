@@ -1,15 +1,17 @@
 // import './App.css';
 import Navbar from './Components/Navbar';
+import CelebrityDetail from './Pages/CelebrityDetail';
 
 function App() {
   return (
-    <div className="App" style={{
-      width:"100%",
-      height:"590px",
-      backgroundImage: "url('https://d31wcbk3iidrjq.cloudfront.net/eab99bea-6bdc-4bf0-ad54-20b9a40efd56.png?w=2080&h=590')"
-    }}>
-      <Navbar/>
-    </div>
+    // <div className="App" style={{
+    //   width:"100%",
+    //   height:"590px",
+    //   backgroundImage: "url('https://d31wcbk3iidrjq.cloudfront.net/eab99bea-6bdc-4bf0-ad54-20b9a40efd56.png?w=2080&h=590')"
+    // }}>
+    //   <Navbar/>
+    // </div>
+    <CelebrityDetail/>
   );
 }
 
