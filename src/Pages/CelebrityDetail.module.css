@@ -11,3 +11,22 @@
     flex-direction: row;
     align-items: center;
 }
+.celebSection{
+    padding: 0px 20px;
+    margin-bottom: 64px;
+    margin-top: 31px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    color:white
+}
+.reviewsBar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 8px;
+}
+.nameSection{
+    display: flex;
+    justify-content: space-between;
+}
