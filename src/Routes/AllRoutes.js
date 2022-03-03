@@ -1,4 +1,5 @@
 import { Route } from "react-router-dom"
+import CelebrityDetail from "../Pages/CelebrityDetail"
 import LandingPage from "../Pages/LandingPage"
 
 
@@ -20,6 +21,9 @@ const AllRoutes = () => {
             </Route>
             <Route exact path="/categories">
                 <h1>Categories Page</h1>
+            </Route>
+            <Route exact path="/celeb">
+                <CelebrityDetail/>
             </Route>
         </>
     )

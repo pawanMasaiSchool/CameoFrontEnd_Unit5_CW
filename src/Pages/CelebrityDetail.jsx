@@ -41,7 +41,7 @@ export default function CelebrityDetail(){
             <div style={{position:'fixed',top:0,width:'100%'}}>
             <Navbar/>
             </div>
-            <div style={{maxWidth:'1080px',margin: '62px auto'}}>
+            <div style={{maxWidth:'1080px',margin: '0 auto'}}>
                 <div className={styles.topbar}>
                     <div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',fontWeight:'500',margin:'0',cursor:'pointer'}}>Home</p></div>
