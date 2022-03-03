@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom"
 import LandingPage from "../Pages/LandingPage"
+import LoginPage from "../Pages/LoginPage"
 
 
 
@@ -13,7 +14,7 @@ const AllRoutes = () => {
                 <h1>Business Page</h1>
             </Route>
             <Route exact path="/login">
-                <h1>Login Page</h1>
+                <LoginPage/>
             </Route>
             <Route exact path="/events">
                 <h1>Events Page</h1>
