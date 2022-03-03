@@ -126,7 +126,7 @@ const Navbar = () => {
                     </Link>
                 </Box>
             </Box>
-            <LandingCarousel/>
+            {/* <LandingCarousel/> */}
         </Box>
     )
 }

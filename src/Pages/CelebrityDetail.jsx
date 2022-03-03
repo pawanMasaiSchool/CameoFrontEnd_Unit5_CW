@@ -10,6 +10,9 @@ import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
 import FolderOpenOutlinedIcon from '@mui/icons-material/FolderOpenOutlined';
 import ReviewStars from "../Components/ReviewStars";
 import RelatedTags from "../Components/RelatedTags";
+import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
+import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 export default function CelebrityDetail(){
     const id= "621f265b58678b08aa0e0c4e"
     const [celeb,setCeleb]= useState(null)
@@ -38,7 +41,7 @@ export default function CelebrityDetail(){
         {isLoading ?
             <div>Loading...</div>:
         <div style={{backgroundColor:'rgb(16,16,16)',width:'100%'}}>
-            <div style={{position:'fixed',top:0,width:'100%'}}>
+            <div style={{position:'fixed',top:0,width:'100%',backgroundColor:'rgb(16,16,16)',color:'white'}}>
             <Navbar/>
             </div>
             <div style={{maxWidth:'1080px',margin: '0 auto'}}>
@@ -180,6 +183,35 @@ export default function CelebrityDetail(){
                         })}
                     </div>
                 </div>
+                <div className={styles.aboutSection}>
+                    <div style={{color:'white',fontSize:'20px',fontWeight:'700'}}>About Cameo</div>
+                        <div className={styles.aboutGrid}>
+                            <div className={styles.aboutDiv}>
+                                <div style={{fontSize:'16px',fontWeight:'700',marginBottom: '17px',color:'rgba(255,3,124,1.00)'}}>What is Cameo?</div>
+                                <div className={styles.aboutItems}>
+                                    <div className={styles.aboutItem}>
+                                        <div style={{color:'rgba(190,187,191,1.00)'}}><PhoneIphoneOutlinedIcon fontSize="large"/></div>
+                                        <div style={{fontSize:'16px',fontWeight:'400',color:'white'}}>Send your request</div>
+                                    </div>
+                                    <div className={styles.aboutItem}>
+                                        <div style={{color:'rgba(190,187,191,1.00)'}}><VideoCameraFrontOutlinedIcon fontSize="large"/></div>
+                                        <div style={{fontSize:'16px',fontWeight:'400',color:'white'}}>Get your video</div>
+                                    </div>
+                                    <div className={styles.aboutItem}>
+                                        <div style={{color:'rgba(190,187,191,1.00)'}}><ThumbUpOutlinedIcon fontSize="large"/></div>
+                                        <div style={{fontSize:'16px',fontWeight:'400',color:'white'}}>Make their year</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className={styles.aboutDiv}>
+                                <div style={{fontSize:'16px',fontWeight:'700',marginBottom: '17px',color:'rgba(33,207,230,1.00)'}}>What does a good request look like?</div>
+                                    <div className={styles.aboutItem2}>
+                                        <div style={{fontSize:'16px',fontWeight:'400',color:'white'}}>Tip #1</div>
+                                        <div style={{fontSize:'16px',fontWeight:'400',color:'rgba(190,187,191,1.00)',letterSpacing:'0.6px',marginTop:'8px'}}>Try to be as specific as possible with your request such as your relationship to the Cameo recipient, numbers & details. Ex. "tell my BFF Cam congrats on graduating from UCLA."</div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         }
