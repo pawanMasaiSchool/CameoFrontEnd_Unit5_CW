@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box"
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     return (
@@ -29,22 +30,33 @@ const Navbar = () => {
                 margin:"3px",
             }}>
                 <img style={{width:"80px",height:"20px",margin:"17px 0px 15px 15px",cursor:"pointer"}} src='https://cdn.cameo.com/staticDir/logo_white.svg' alt="logo" />
-                <Box sx={{
-                    padding:"19px 0px",
-                    cursor:"pointer",
-                }}>Categories</Box>
-                <Box sx={{
+                <Link to="/categories" style={{textDecoration:"none", color:"white"}}>
+                    <Box sx={{
+                        padding:"19px 0px",
+                        cursor:"pointer",
+                    }}>Categories</Box>
+                </Link>
+                <Link to="/events" style={{textDecoration:"none", color:"white"}}>
+                    <Box sx={{
                     padding:"19px 0px",
                     cursor:"pointer"
                 }}>Events</Box>
-                <Box sx={{
+                </Link>
+                
+                <Link to="/business" style={{textDecoration:"none", color:"white"}}>
+                    <Box sx={{
                     padding:"19px 0px",
                     cursor:"pointer"
                 }}>Business</Box>
-                <Box sx={{
+                </Link>
+                
+                <Link to="about" style={{textDecoration:"none", color:"white"}}>
+                    <Box sx={{
                     padding:"19px 0px",
                     cursor:"pointer"
                 }}>About</Box>
+                </Link>
+                
             </Box>
             <Box name='searchAndLog' sx={{
                 // border:"1px solid white",
@@ -86,24 +98,27 @@ const Navbar = () => {
                     }} placeholder="Search..." />
 
                 </Box>
-                <button style={{
-                    background:"black",
-                    cursor:"pointer",
-                    width:"80px",
-                    height:"40px",
-                    fontSize:"14px",
-                    margin:"1.5% 1% 1.5% 0%",
-                    borderRadius:"10px",
-                    borderWidth:"0px",
-                    opacity:"1.1",
-                    color:"white",
-                    border:"2px solid gray",
-                    hover:{
-                        border:"2px solid black",
-                    }
-                }}>
-                    Log In
-                </button>
+                
+                <Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
+                    <button style={{
+                        background:"black",
+                        cursor:"pointer",
+                        width:"80px",
+                        height:"40px",
+                        fontSize:"14px",
+                        // margin:"1.5% 1% 1.5% 0%",
+                        borderRadius:"10px",
+                        borderWidth:"0px",
+                        opacity:"1.1",
+                        color:"white",
+                        border:"2px solid gray",
+                        hover:{
+                            border:"2px solid black",
+                        }
+                    }}>
+                        Log In
+                    </button>
+                </Link>
             </Box>
         </Box>
     )
