@@ -13,6 +13,7 @@ import RelatedTags from "../Components/RelatedTags";
 import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import CelebCarousel from "../Components/CelebCarousel";
 export default function CelebrityDetail(){
     const id= "621f265b58678b08aa0e0c4e"
     const [celeb,setCeleb]= useState(null)
@@ -36,12 +37,13 @@ export default function CelebrityDetail(){
     useEffect(() => {
         handleFetch();
     },[]);
+    if(isLoading){
+        return <div>Loading...</div>
+    }
+    else{
     return(
-        <>
-        {isLoading ?
-            <div>Loading...</div>:
         <div style={{backgroundColor:'rgb(16,16,16)',width:'100%'}}>
-            <div style={{position:'fixed',top:0,width:'100%',backgroundColor:'rgb(16,16,16)',color:'white'}}>
+            <div style={{position:'fixed',top:0,width:'100%',backgroundColor:'rgb(16,16,16)',color:'white',zIndex:'1'}}>
             <Navbar/>
             </div>
             <div style={{maxWidth:'1080px',margin: '0 auto'}}>
@@ -74,7 +76,7 @@ export default function CelebrityDetail(){
                 </div>
                 <div className={styles.celebSection}>
                     <div>
-                        Add videos here
+                        <CelebCarousel videos={celeb.video_urls}/>
                     </div>
                     <div>
                         <div className={styles.reviewsBar}>
@@ -214,7 +216,6 @@ export default function CelebrityDetail(){
                     </div>
             </div>
         </div>
-        }
-    </>
     )
+    }
 }
