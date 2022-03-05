@@ -3,9 +3,7 @@ import LandingCarousel from "../Components/LandingCarousel"
 
 const LandingPage = () => {
     return (
-        <>
-            <LandingCarousel />
-        </>
+        <LandingCarousel />
     )
 }
 

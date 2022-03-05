@@ -1,16 +1,18 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import Box from "@mui/material/Box";
 
 const LandingCarousel = () => {
   return (
+    <Box >
     <Carousel
       autoPlay={true}
       interval={2000}
       infiniteLoop={true}
       showArrows={true}
       showStatus={false}
-      width="99.8%"
+      width="100%"
       showThumbs={false}
     >
       <div>
@@ -42,6 +44,7 @@ const LandingCarousel = () => {
         />
       </div>
     </Carousel>
+    </Box>
   );
 };
 
