@@ -26,7 +26,7 @@ export default function CelebrityDetail(){
         try {
             setIsLoading(true);
             const {data} = await fetchData();
-            setCeleb(data[0])
+            setCeleb(data[9])
             setIsLoading(false);
             setPrice(celeb.price.personal)
         }
@@ -46,7 +46,7 @@ export default function CelebrityDetail(){
             <div style={{position:'fixed',top:0,width:'100%',backgroundColor:'rgb(16,16,16)',color:'white',zIndex:'1'}}>
             <Navbar/>
             </div>
-            <div style={{maxWidth:'1080px',margin: '0 auto'}}>
+            <div style={{maxWidth:'1080px',margin: '0 auto',marginTop:'60px'}}>
                 <div className={styles.topbar}>
                     <div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',fontWeight:'500',margin:'0',cursor:'pointer'}}>Home</p></div>
