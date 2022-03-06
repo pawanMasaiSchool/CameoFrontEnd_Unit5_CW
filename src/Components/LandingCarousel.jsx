@@ -5,7 +5,9 @@ import Box from "@mui/material/Box";
 
 const LandingCarousel = () => {
   return (
-    <Box >
+    <Box sx={{
+      zIndex: "1"
+    }} >
     <Carousel
       autoPlay={true}
       interval={2000}

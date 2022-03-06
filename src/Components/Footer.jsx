@@ -14,13 +14,13 @@ const Footer = () => {
     return(
         <Box sx={{
             background:"#1E1B1E",
-            width:"96.7%",
+            width:"97.7%",
             height:"auto",
             display:"flex",
             flexDirection:"row",
             flexWrap:"wrap",
             gap:".6%",
-            padding:"60px 0px 60px 50px"
+            padding:"50px 0px 60px 35px"
         }}>
             <Box sx={{
                 // border:"2px solid red",
@@ -86,7 +86,7 @@ const Footer = () => {
             </Box>
             <Box sx={{
                 // border:"1px solid red",
-                width:"480px",
+                width:"520px",
                 fontSize:"16px",
                 color:"#FFFFFF",
                 padding:"0px 10px 10px 10px",
@@ -131,10 +131,9 @@ const Footer = () => {
                 <a href="#" className={styling.footerAtag}>Do Not Sell My Personal Information</a>
             </Box>
             <Box sx={{
-                width:"19%",
+                width:"25%",
                 // border:"1px solid red",
-                padding:"10px",
-                marginTop:"20px",
+                marginTop:"60px",
                 display:"flex",
                 flexDirection:"row",
                 flexWrap:"wrap",

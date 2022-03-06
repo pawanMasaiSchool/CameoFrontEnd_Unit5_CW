@@ -1,0 +1,166 @@
+.simpleNavElement{
+    text-decoration:none;
+    color:white;
+    padding:19px 0px;
+    
+}
+
+.simpleNavElement:hover{
+    background-color: #272127;
+    border-radius: 15px;
+    padding: 19px 10px 0px 10px;
+    margin: 0px -10px;
+    
+}
+
+.complexNavElement{
+    text-decoration:none;
+    color:white;
+    padding: 19px 0px;
+}
+
+.complexNavElement:hover{
+    background-color: #272127;
+    border-radius: 15px;
+    padding: 19px 10px 0px 10px;
+    margin: 0px -10px;
+    
+}
+
+.subElements_1{
+    display: none;
+    width: 150px;
+    margin: 15px 0px 0px -10px;
+    height: auto;
+    background-color: #1E1B1E;
+    padding: 15px;
+    border-radius: 10px;
+    z-index: 99999;
+}
+
+.complexNavElement:hover .subElements_1{
+    display: block;
+    position: fixed;
+}
+
+.subElements_1:hover{
+    display: block;
+    z-index: 99999;
+
+}
+.subElements_2{
+    padding: 8px 5px 8px 5px;
+    position: relative;
+    right: 5px;
+    text-decoration: none;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.subElements_2:hover{
+    text-decoration: none;
+    background-color: #504d50;
+    border-radius: 5px;
+    padding: 8px 5px 8px 5px;
+    position: relative;
+    right: 5px;
+    
+}
+
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------------------- */
+
+
+.mainCategoryBox{
+    text-decoration:none;
+    color:white;
+    padding: 19px 0px;
+}
+
+.mainCategoryBox:hover{
+    background-color: #272127;
+    border-radius: 15px;
+    padding: 19px 10px 0px 10px;
+    margin: 0px -10px;
+}
+
+.allCategoryBox{
+    display: none;
+    width: 150px;
+    margin: 15px 0px 0px -10px;
+    height: auto;
+    background-color: #1E1B1E;
+    padding: 15px 10px 15px 20px;
+    border-radius: 10px;
+    z-index: 9;
+}
+
+.mainCategoryBox:hover .allCategoryBox{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    position: absolute;
+}
+
+.fieldOfCategory{
+    padding: 12px 5px 8px 15px;
+    position: relative;
+    right: 5px;
+    height: 25px;
+    text-decoration: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.fieldOfCategory:hover{
+    text-decoration: none;
+    background-color: #504d50;
+    border-radius: 5px;
+    padding: 12px 5px 8px 15px;
+    position: relative;
+    right: 5px;
+    height: 25px;
+}
+
+.smallerCategoriesBox{
+    display: none;
+    width: 350px;
+    height: 312px;
+    background-color: #1E1B1E;
+    padding: 10px;
+    border-left: 1px solid white;
+}
+
+.fieldOfCategory:hover .smallerCategoriesBox{
+    display: flex;
+    margin: 0px;
+    height: 300px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    row-gap: 0px;
+    column-gap: 0px;
+    position:absolute;
+    left: 150px;
+    top: -15px;
+    padding: 10px 0px 10px 20px;
+}
+
+.detailedCate{
+    width: 150px;
+    padding: 15px 5px 0px 15px;
+    margin: 0px;
+}
+
+.detailedCate:hover{
+    width: 150px;
+    border-radius: 8px;
+    background-color: #504d50;
+    padding: 15px 5px 0px 15px;
+    margin: 0px;
+}

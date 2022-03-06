@@ -2,6 +2,7 @@ import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import AppleIcon from '@mui/icons-material/Apple';
 import ATagWithLink from "../Components/ATagWithLink";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
     return (
@@ -118,7 +119,12 @@ const LoginPage = () => {
                     color:"#ADAEB5",
                     fontSize:"13.5px",
                     fontWeight:"500"
-                }}>Don't have an account?<ATagWithLink> Sign up</ATagWithLink></p>
+                }}>Don't have an account? <Link to="/signup" style={{
+                    color:"white",
+                    fontWeight:"700",
+                    fontSize:"14px",
+                    textDecoration:"none"
+                }}>Sign up</Link></p>
             </Box>
         </Box>
     )
