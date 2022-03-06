@@ -1,6 +1,7 @@
 import { Route } from "react-router-dom"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
+import SignupPage from "../Pages/SignupPage"
 
 
 
@@ -23,7 +24,7 @@ const AllRoutes = () => {
                 <LoginPage/>
             </Route>
             <Route exact path="/signup">
-                <h1>Sign up</h1>
+                <SignupPage />
             </Route>
             <Route exact path="/events">
                 <h1>Events Page</h1>
