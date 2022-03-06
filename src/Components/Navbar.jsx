@@ -158,65 +158,115 @@ const Navbar = () => {
             <Box name='searchAndLog' sx={{
                 // border:"1px solid white",
                 color:"white",
-                display:"flex",
-                flexDirection:"row",
-                width:"42%",
-                gap:"1%"
+                justifyContent:"space-evenly",
+                gap:"2%",
             }}>
-                <Box sx={{
-                    // border:"1px solid red",
-                    width:"78%",
-                    padding:"5px",
+                <Box name='navlinks' sx={{
+                    // border:"1px solid white",
+                    color:"white",
                     display:"flex",
+                    flexDirection:"row",
+                    gap:"7.7%",
+                    width:"55%",
+                    margin:"3px",
+                    
                 }}>
-                    <button style={{
-                        width:"30px",
-                        margin:"1% 0% 1% 0%",
-                        marginTop:"1%",
-                        paddingTop:"6px",
-                        height:"40px",
-                        borderWidth:"0px",
-                        cursor:"pointer",
-                        background:"white",
-                        borderRadius:"20px 0px 0px 20px",
-                    }}>
-                        <SearchSharpIcon />
-                    </button>
-                    <input style={{
-                        width:"87%",
-                        margin:"1% 0% 1% 0%",
-                        height:"30px",
-                        padding:"5px 5px 5px 10px",
-                        fontSize:"16px",
-                        fontWeight:"500",
-                        color:"#AEAFB6",
-                        borderRadius:"0px 20px 20px 0px",
-                        borderWidth:"0px"
-                    }} placeholder="Search..." />
-
+                    <Link>
+            
+                        <img style={{width:"80px",height:"20px",margin:"17px 0px 15px 15px",cursor:"pointer"}} src='https://cdn.cameo.com/staticDir/logo_white.svg' alt="logo" />
+                    </Link>
+                    <Link to="/categories" style={{textDecoration:"none", color:"white"}}>
+                        <Box sx={{
+                            padding:"19px 0px",
+                            cursor:"pointer",
+                        }}>Categories</Box>
+                    </Link>
+                    <Link to="/events" style={{textDecoration:"none", color:"white"}}>
+                        <Box sx={{
+                        padding:"19px 0px",
+                        cursor:"pointer"
+                    }}>Events</Box>
+                    </Link>
+                    
+                    <Link to="/business" style={{textDecoration:"none", color:"white"}}>
+                        <Box sx={{
+                        padding:"19px 0px",
+                        cursor:"pointer"
+                    }}>Business</Box>
+                    </Link>
+                    
+                    <Link to="about" style={{textDecoration:"none", color:"white"}}>
+                        <Box sx={{
+                        padding:"19px 0px",
+                        cursor:"pointer"
+                    }}>About</Box>
+                    </Link>
+                    
                 </Box>
-                
-                <Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
-                    <button style={{
-                        background:"black",
-                        cursor:"pointer",
-                        width:"80px",
-                        height:"40px",
-                        fontSize:"14px",
-                        // margin:"1.5% 1% 1.5% 0%",
-                        borderRadius:"10px",
-                        borderWidth:"0px",
-                        opacity:"1.1",
-                        color:"white",
-                        border:"2px solid gray",
-                        hover:{
-                            border:"2px solid black",
-                        }
+                <Box name='searchAndLog' sx={{
+                    // border:"1px solid white",
+                    color:"white",
+                    display:"flex",
+                    flexDirection:"row",
+                    width:"42%",
+                    gap:"1%"
+                }}>
+                    <Box sx={{
+                        // border:"1px solid red",
+                        width:"78%",
+                        padding:"5px",
+                        display:"flex",
                     }}>
-                        Log In
-                    </button>
-                </Link>
+                        <button style={{
+                            width:"30px",
+                            margin:"1% 0% 1% 0%",
+                            marginTop:"1%",
+                            paddingTop:"6px",
+                            height:"40px",
+                            borderWidth:"0px",
+                            cursor:"pointer",
+                            background:"white",
+                            borderRadius:"20px 0px 0px 20px",
+                        }}>
+                            <SearchSharpIcon />
+                        </button>
+                        <input style={{
+                            width:"87%",
+                            margin:"1% 0% 1% 0%",
+                            height:"30px",
+                            padding:"5px 5px 5px 10px",
+                            fontSize:"16px",
+                            fontWeight:"500",
+                            color:"#AEAFB6",
+                            borderRadius:"0px 20px 20px 0px",
+                            borderWidth:"0px"
+                        }} placeholder="Search..." />
+
+                    </Box>
+                    
+                    <Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
+                        <button style={{
+                            background:"black",
+                            cursor:"pointer",
+                            width:"80px",
+                            height:"40px",
+                            fontSize:"14px",
+                            // margin:"1.5% 1% 1.5% 0%",
+                            borderRadius:"10px",
+                            borderWidth:"0px",
+                            opacity:"1.1",
+                            color:"white",
+                            border:"2px solid gray",
+                            hover:{
+                                border:"2px solid black",
+                            }
+                        }}>
+                            Log In
+                        </button>
+                    </Link>
+                </Box>
             </Box>
+            {/* <LandingCarousel/> */}
         </Box>
     )
 }

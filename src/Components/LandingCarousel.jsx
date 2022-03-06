@@ -14,7 +14,7 @@ const LandingCarousel = () => {
       infiniteLoop={true}
       showArrows={true}
       showStatus={false}
-      width="100%"
+      width="99.8%"
       showThumbs={false}
     >
       <div>
