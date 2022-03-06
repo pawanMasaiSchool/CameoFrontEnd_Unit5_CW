@@ -155,55 +155,22 @@ const Navbar = () => {
                 <Link to="about" className={styling.simpleNavElement}>About</Link>
                 
             </Box>
-            <Box name='searchAndLog' sx={{
-                // border:"1px solid white",
-                color:"white",
-                justifyContent:"space-evenly",
-                gap:"2%",
-            }}>
-                <Box name='navlinks' sx={{
-                    // border:"1px solid white",
-                    color:"white",
-                    display:"flex",
-                    flexDirection:"row",
-                    gap:"7.7%",
-                    width:"55%",
-                    margin:"3px",
-                    
-                }}>
-                    <Link>
+
+
+
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
+            {/* ------------------------------------------------------------------------------------------------------------------------ */}
             
-                        <img style={{width:"80px",height:"20px",margin:"17px 0px 15px 15px",cursor:"pointer"}} src='https://cdn.cameo.com/staticDir/logo_white.svg' alt="logo" />
-                    </Link>
-                    <Link to="/categories" style={{textDecoration:"none", color:"white"}}>
-                        <Box sx={{
-                            padding:"19px 0px",
-                            cursor:"pointer",
-                        }}>Categories</Box>
-                    </Link>
-                    <Link to="/events" style={{textDecoration:"none", color:"white"}}>
-                        <Box sx={{
-                        padding:"19px 0px",
-                        cursor:"pointer"
-                    }}>Events</Box>
-                    </Link>
-                    
-                    <Link to="/business" style={{textDecoration:"none", color:"white"}}>
-                        <Box sx={{
-                        padding:"19px 0px",
-                        cursor:"pointer"
-                    }}>Business</Box>
-                    </Link>
-                    
-                    <Link to="about" style={{textDecoration:"none", color:"white"}}>
-                        <Box sx={{
-                        padding:"19px 0px",
-                        cursor:"pointer"
-                    }}>About</Box>
-                    </Link>
-                    
-                </Box>
-                <Box name='searchAndLog' sx={{
+            
+            
+            <Box name='searchAndLog' sx={{
                     // border:"1px solid white",
                     color:"white",
                     display:"flex",
@@ -265,8 +232,6 @@ const Navbar = () => {
                         </button>
                     </Link>
                 </Box>
-            </Box>
-            {/* <LandingCarousel/> */}
         </Box>
     )
 }

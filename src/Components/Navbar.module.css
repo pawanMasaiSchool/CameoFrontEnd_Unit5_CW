@@ -6,7 +6,7 @@
 }
 
 .simpleNavElement:hover{
-    background-color: #272127;
+    background-color: #3b383b;
     border-radius: 15px;
     padding: 19px 10px 0px 10px;
     margin: 0px -10px;
@@ -20,7 +20,7 @@
 }
 
 .complexNavElement:hover{
-    background-color: #272127;
+    background-color: #3b383b;
     border-radius: 15px;
     padding: 19px 10px 0px 10px;
     margin: 0px -10px;
@@ -83,7 +83,7 @@
 }
 
 .mainCategoryBox:hover{
-    background-color: #272127;
+    background-color: #3b383b;
     border-radius: 15px;
     padding: 19px 10px 0px 10px;
     margin: 0px -10px;
