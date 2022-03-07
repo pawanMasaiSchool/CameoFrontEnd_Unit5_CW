@@ -14,19 +14,21 @@ import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import CelebCarousel from "../Components/CelebCarousel";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 export default function CelebrityDetail(){
-    const id= "621f265b58678b08aa0e0c4e"
+    const {celeb_id}= useParams()
     const [celeb,setCeleb]= useState(null)
     const [isLoading, setIsLoading]= useState(true)
     const [price,setPrice]= useState(null)
     const fetchData = () => {
-        return axios.get(`https://cameo-backend.herokuapp.com/`)
+        return axios.get(`http://localhost:5000/celebs/`+celeb_id)
     }
     const handleFetch = async () => {
         try {
             setIsLoading(true);
             const {data} = await fetchData();
-            setCeleb(data[9])
+            setCeleb(data)
+            console.log(data)
             setIsLoading(false);
             setPrice(celeb.price.personal)
         }
