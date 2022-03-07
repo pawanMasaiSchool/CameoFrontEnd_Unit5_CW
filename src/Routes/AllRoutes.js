@@ -1,4 +1,5 @@
 import { Route } from "react-router-dom"
+import BookingPage from "../Pages/BookingPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
@@ -33,8 +34,11 @@ const AllRoutes = () => {
             <Route exact path="/categories">
                 <h1>Categories Page</h1><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
             </Route>
-            <Route exact path="/celeb">
+            <Route exact path="/:celeb_id">
                 <CelebrityDetail/>
+            </Route>
+            <Route exact path="/book">
+                <BookingPage/>
             </Route>
         </>
     )
