@@ -5,20 +5,20 @@ import styling from "./Navbar.module.css"
 
 const Navbar = () => {
     return (
-        <Box name='navbar' sx={{
-            border:"1px solid black",
+        <Box sx={{
+            position:"fixed",
             fontFamily:"sans-serif",
             fontWeight:"700",
             fontSize:"16px",
             height:"60px",
-            width:"99.%",
-            margin:"auto",
+            width:"100%",
             backgroundColor:"black",
             display:"flex",
             flexDirection:"row",
             color:"white",
             justifyContent:"space-evenly",
             gap:"2%",
+            zIndex:888,
         }}>
             <Box name='navlinks' sx={{
                 // border:"1px solid white",
