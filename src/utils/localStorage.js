@@ -15,3 +15,13 @@ export const loadData = (key) => {
       return -1;
     }
   };
+
+  export const removeData = (key)=>{
+      try{
+          localStorage.removeItem(key)
+          return 1
+      }
+      catch(err){
+          return -1
+      }
+  }

@@ -46,7 +46,7 @@ export default function CelebrityDetail(){
     return(
         <div style={{backgroundColor:'rgb(16,16,16)',width:'100%'}}>
             <div style={{maxWidth:'1080px',margin: '0 auto'}}>
-                <div className={styles.topbar} style={{paddingTop:'65px'}}>
+                <div className={styles.topbar} style={{paddingTop:'75px'}}>
                     <div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',fontWeight:'500',margin:'0',cursor:'pointer'}}>Home</p></div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',color:'rgba(65,61,64)',fontWeight:'500',margin:'0 8px'}}>/</p></div>
@@ -57,18 +57,12 @@ export default function CelebrityDetail(){
                     <div className={styles.buttonSection}>
                         <div style={{marginRight:'12px'}}>
                             <div className={styles.fanClubButton}>
-                                <div style={{paddingTop:'10px',paddingBottom:'10px',marginRight:'4px'}}><StarBorderOutlinedIcon fontSize="small"/></div>
-                                <div style={{fontWeight:'700',fontSize:'16px',paddingTop:'7px',paddingBottom:'7px'}}>Join Fan Club</div>
+                                <div style={{fontWeight:'700',fontSize:'16px',paddingTop:'10px',paddingBottom:'7px'}}>Follow</div>
                             </div>
                         </div>
                         <div style={{marginRight:'12px'}}>
                             <div className={styles.iconBtn}>
                                 <IosShareIcon fontSize="small"/>
-                            </div>
-                        </div>
-                        <div>
-                        <div className={styles.iconBtn}>
-                                <BookmarkBorderIcon fontSize="small"/>
                             </div>
                         </div>
                     </div>
@@ -97,7 +91,7 @@ export default function CelebrityDetail(){
                             </div>
                         </div>
                         {celeb.delivery_24hr?<div style={{backgroundColor: 'rgb(28, 28, 28)',padding:'6px',width:'175px',marginTop:'5px',borderRadius:'5px'}}>
-                            <p style={{color:'rgb(255, 221, 90)',margin:'0'}}>
+                            <p style={{color:'rgb(255, 221, 90)',margin:'0',fontSize:'14px'}}>
                             <img style={{height:'14px',marginRight:'4px'}} src="https://cdn.cameo.com/static/24hr-icon.svg" alt="Expedited-Cameo"/>
                             24hr delivery available
                             </p>
@@ -208,7 +202,7 @@ export default function CelebrityDetail(){
                                 <div style={{fontSize:'16px',fontWeight:'700',marginBottom: '17px',color:'rgba(33,207,230,1.00)'}}>What does a good request look like?</div>
                                     <div className={styles.aboutItem2}>
                                         <div style={{fontSize:'16px',fontWeight:'400',color:'white'}}>Tip #1</div>
-                                        <div style={{fontSize:'16px',fontWeight:'400',color:'rgba(190,187,191,1.00)',letterSpacing:'0.6px',marginTop:'8px'}}>Try to be as specific as possible with your request such as your relationship to the Cameo recipient, numbers & details. Ex. "tell my BFF Cam congrats on graduating from UCLA."</div>
+                                        <div style={{fontSize:'14px',fontWeight:'400',color:'rgba(190,187,191,1.00)',letterSpacing:'0.6px',marginTop:'8px'}}>Try to be as specific as possible with your request such as your relationship to the Cameo recipient, numbers & details. Ex. "tell my BFF Cam congrats on graduating from UCLA."</div>
                                     </div>
                             </div>
                         </div>

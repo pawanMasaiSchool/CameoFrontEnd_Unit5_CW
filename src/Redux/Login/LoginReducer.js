@@ -2,7 +2,7 @@ import {
     actionTypes
   } from "./actionTypes";
   
-  import { loadData, saveData } from "../../utils/localStorage";
+  import { loadData, removeData, saveData } from "../../utils/localStorage";
 
   const token = loadData("token") || null;
 
@@ -25,6 +25,16 @@ import {
           token: action.payload.token,
           user: action.payload.user
         };
+      }
+      case actionTypes.LOGOUT_SUCCESS:{
+        removeData("token")
+        removeData("user")
+        return{
+          ...currentState,
+          isAuth:false,
+          token:null,
+          user:null
+        }
       }
       default: {
         return currentState;

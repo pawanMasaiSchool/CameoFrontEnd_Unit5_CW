@@ -1,15 +1,18 @@
+import { Switch } from "react-router-dom"
 import { Route } from "react-router-dom"
 import BookingPage from "../Pages/BookingPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
 import SignupPage from "../Pages/SignupPage"
+import PrivateRoute from "./PrivateRoutes"
 
 
 
 const AllRoutes = () => {
     return(
         <>
+        <Switch>
             <Route exact path="/">
                 <LandingPage/>
             </Route>
@@ -40,9 +43,19 @@ const AllRoutes = () => {
             <Route exact path="/celeb/:celeb_id">
                 <CelebrityDetail/>
             </Route>
+            <PrivateRoute exact={true} path="/:username/account">
+            <br/><br/><br/><br/><br/><br/><h1>Account</h1><br/><br/><br/><br/><br/><br/>
+            </PrivateRoute>
+            <PrivateRoute exact={true} path="/:username/orders">
+            <br/><br/><br/><br/><br/><br/><h1>Orders</h1><br/><br/><br/><br/><br/><br/>
+            </PrivateRoute>
+            <PrivateRoute exact={true} path="/:username/following">
+            <br/><br/><br/><br/><br/><br/><h1>Following</h1><br/><br/><br/><br/><br/><br/>
+            </PrivateRoute>
             <Route exact path="/book">
                 <BookingPage/>
             </Route>
+            </Switch>
         </>
     )
 }
