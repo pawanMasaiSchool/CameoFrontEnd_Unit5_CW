@@ -4,11 +4,36 @@ import AppleIcon from '@mui/icons-material/Apple';
 import ATagWithLink from "../Components/ATagWithLink";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { Construction } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { loginsuccess } from "../Redux/Login/action";
 
 const LoginPage = () => {
+    const [email,setEmail]= useState('')
+    const dispatch= useDispatch()
     const history= useHistory()
+    const [password,setPassword]= useState('')
     const handleFacebookLogin = ()=>{
         window.open("http://localhost:5000/auth/facebook", "_self");
+    }
+    const loginUser= async ()=>{
+       return axios.post('http://localhost:5000/auth/signin', {
+            email,password
+          })
+    }
+    const handleLogin= ()=>{
+        loginUser()
+          .then(function (response) {
+            const {data}= response.data
+            const action= loginsuccess(data.token,data.user)
+        dispatch(action)
+            history.push('/')
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
     }
     return (
         <Box sx={{
@@ -72,11 +97,13 @@ const LoginPage = () => {
                     height:"47px",
                     borderWidth:"0px",
                     border:"1px solid #413D40",
-                    color:"#413D40",
+                    color:"white",
                     padding:"0px 15px",
-                    fontSize:"16px"
+                    fontSize:"16px",
                 }}
                 placeholder="you@example.com"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
                 />
                 <p style={{
                     color:"white",
@@ -93,11 +120,14 @@ const LoginPage = () => {
                     height:"47px",
                     borderWidth:"0px",
                     border:"1px solid #413D40",
-                    color:"#413D40",
+                    color:"white",
                     padding:"0px 15px",
                     fontSize:"16px"
                 }}
                 placeholder="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                type='password'
                 />
                 <Button variant="contained" sx={{
                     textTransform:"none",
@@ -109,7 +139,7 @@ const LoginPage = () => {
                     background:"#45FFFF",
                     fontSize:"15px",
                     fontWeight:"600"
-                }}>Log in with email</Button>
+                }} onClick={handleLogin}>Log in with email</Button>
                 <p style={{
                     color:"#ADAEB5",
                     fontSize:"13.5px",
