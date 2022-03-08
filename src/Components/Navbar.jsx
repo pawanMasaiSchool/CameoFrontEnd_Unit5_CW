@@ -10,14 +10,19 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 
 const Navbar = () => {
     const isAuth= useSelector((state)=>state.login.isAuth)
-    const user= useSelector((state)=>state.login.user)
+    const token= useSelector((state)=>state.login.token)
     const [profile,setProfile]=useState(null)
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/user/`+user)
+        return axios.get(`http://localhost:5000/user/profile`,{
+            headers: {
+              'authorization': `Bearer ${token}`
+            }
+          })
     }
     const getUser=async ()=>{
         try {
             const {data} = await fetchData();
+            console.log(data)
             setProfile(data.profile_picture)
         }
         catch (error) {
