@@ -46,7 +46,7 @@ export default function CelebrityDetail(){
     return(
         <div style={{backgroundColor:'rgb(16,16,16)',width:'100%'}}>
             <div style={{maxWidth:'1080px',margin: '0 auto'}}>
-                <div className={styles.topbar}>
+                <div className={styles.topbar} style={{paddingTop:'65px'}}>
                     <div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',fontWeight:'500',margin:'0',cursor:'pointer'}}>Home</p></div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',color:'rgba(65,61,64)',fontWeight:'500',margin:'0 8px'}}>/</p></div>

@@ -1,40 +1,31 @@
 import {
-    LOGIN_REQUEST,
-    LOGIN_REQUEST_FAILURE,
-    LOGIN_REQUEST_SUCCESS
+    actionTypes
   } from "./actionTypes";
   
+  import { loadData, saveData } from "../../utils/localStorage";
+
+  const token = loadData("token") || null;
+
+  const user= loadData("user") || null
+
   const initLogin = {
-    LoginIsLoading: false,
-    LoginIsError: false
+    isAuth: token !== null,
+    token: token,
+    user: user
   };
   
   const LoginReducer = (currentState = initLogin, action) => {
     switch (action.type) {
-      case LOGIN_REQUEST: {
+      case actionTypes.LOGIN_SUCCESS: {
+        saveData("token",action.payload.token)
+        saveData("user",action.payload.user)
         return {
           ...currentState,
-          LoginIsLoading: true,
-          LoginIsError: false
+          isAuth: true,
+          token: action.payload.token,
+          user: action.payload.user
         };
       }
-  
-      case LOGIN_REQUEST_SUCCESS: {
-        return {
-          ...currentState,
-          LoginIsLoading: false,
-          LoginIsError: false,
-        };
-      }
-  
-      case LOGIN_REQUEST_FAILURE: {
-        return {
-          ...currentState,
-          LoginIsLoading: false,
-          LoginIsError: true
-        };
-      }
-  
       default: {
         return currentState;
       }
