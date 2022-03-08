@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 
 const Navbar = () => {
     const isAuth= useSelector((state)=>state.login.isAuth)
@@ -235,8 +236,8 @@ const Navbar = () => {
 
                     </Box>
                     { isAuth?
-                    <div style={{paddingTop:'7px'}}>
-                        <img style={{width:'45px',height:'45px',borderRadius:'25px'}} src={profile}/>
+                    <div style={{paddingTop:'7px',cursor:'pointer'}}>
+                        <img style={{width:'45px',height:'45px',borderRadius:'25px'}} src={profile}/> <ExpandMoreOutlinedIcon style={{paddingBottom:'10px'}}/>
                     </div>
                     :<Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
                         <button style={{
