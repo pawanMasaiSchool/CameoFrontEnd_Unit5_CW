@@ -37,7 +37,7 @@ const AllRoutes = () => {
             <Route exact path="/categories">
             <br/><br/><br/><br/><br/><br/><h1>Categories Page</h1><br/><br/><br/><br/><br/><br/>
             </Route>
-            <Route exact path="/:celeb_id">
+            <Route exact path="/celeb/:celeb_id">
                 <CelebrityDetail/>
             </Route>
             <Route exact path="/book">

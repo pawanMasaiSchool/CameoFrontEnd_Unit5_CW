@@ -3,8 +3,13 @@ import Button from "@mui/material/Button"
 import AppleIcon from '@mui/icons-material/Apple';
 import ATagWithLink from "../Components/ATagWithLink";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const LoginPage = () => {
+    const history= useHistory()
+    const handleFacebookLogin = ()=>{
+        window.open("http://localhost:5000/auth/facebook", "_self");
+    }
     return (
         <Box sx={{
             background:"#101010",
@@ -26,14 +31,14 @@ const LoginPage = () => {
                     fontSize:"30px",
                     color:"#FFFFFF"
                 }}>Log in to Cameo</h2>
-                <Button variant="contained" sx={{
+                <Button onClick={handleFacebookLogin} variant="contained" sx={{
                     width:"312px",
                     height:"47px",
                     padding:"10px 21px",
                     color:"#FFFFFF",
                     fontSize:"15px"
                 }}>Continue with Facebook</Button>
-                <Button variant="contained" sx={{
+                {/* <Button variant="contained" sx={{
                     textTransform:"none",
                     width:"312px",
                     height:"47px",
@@ -47,7 +52,7 @@ const LoginPage = () => {
                     }
                 }}>
                     <AppleIcon sx={{fontSize:"19px", marginBottom:"4px", marginRight:"5px"}} />
-                    Continue with Apple</Button>
+                    Continue with Apple</Button> */}
                 <p style={{
                     color:"white"
                 }}

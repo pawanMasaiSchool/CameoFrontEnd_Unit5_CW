@@ -2,8 +2,32 @@ import Box from "@mui/material/Box"
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import { Link } from "react-router-dom";
 import styling from "./Navbar.module.css"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
 
 const Navbar = () => {
+    const isAuth= useSelector((state)=>state.login.isAuth)
+    const user= useSelector((state)=>state.login.user)
+    const [profile,setProfile]=useState(null)
+    const fetchData = () => {
+        return axios.get(`http://localhost:5000/user/`+user)
+    }
+    const getUser=async ()=>{
+        try {
+            const {data} = await fetchData();
+            setProfile(data.profile_picture)
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    useEffect(()=>{
+        if(isAuth){
+            getUser()
+        }
+    },[isAuth])
     return (
         <Box sx={{
             position:"fixed",
@@ -210,8 +234,11 @@ const Navbar = () => {
                         }} placeholder="Search..." />
 
                     </Box>
-                    
-                    <Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
+                    { isAuth?
+                    <div style={{paddingTop:'7px'}}>
+                        <img style={{width:'45px',height:'45px',borderRadius:'25px'}} src={profile}/>
+                    </div>
+                    :<Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
                         <button style={{
                             background:"black",
                             cursor:"pointer",
@@ -230,7 +257,7 @@ const Navbar = () => {
                         }}>
                             Log In
                         </button>
-                    </Link>
+                    </Link>}
                 </Box>
         </Box>
     )
