@@ -14,6 +14,7 @@ import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOu
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import CelebCarousel from "../Components/CelebCarousel";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 
 export default function CelebrityDetail(){
@@ -131,8 +132,8 @@ export default function CelebrityDetail(){
                         </div>
                         <div style={{backgroundColor:'rgb(255, 3, 124)',borderRadius:'10px',textAlign:'center',paddingTop:'16px',paddingBottom:'16px',cursor:'pointer'}}>
                             {price?
-                            <div style={{fontSize:'17px',fontWeight:'700'}}>Book now ₹{price}</div>:
-                            <div style={{fontSize:'17px',fontWeight:'700'}}>Book now</div>}
+                            <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}}>Book now ₹{price}</div></Link>:
+                            <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}}>Book now</div></Link>}
                         </div>
                     </div>
                 </div>

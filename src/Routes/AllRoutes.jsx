@@ -52,7 +52,7 @@ const AllRoutes = () => {
             <PrivateRoute exact={true} path="/:username/following">
             <br/><br/><br/><br/><br/><br/><h1>Following</h1><br/><br/><br/><br/><br/><br/>
             </PrivateRoute>
-            <Route exact path="/book">
+            <Route exact path="/book/:celeb_id">
                 <BookingDetailsPage />
             </Route>
             </Switch>

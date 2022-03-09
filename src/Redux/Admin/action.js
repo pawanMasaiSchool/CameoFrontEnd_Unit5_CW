@@ -19,7 +19,6 @@ const submitAdminFailure = () => ({
   type: ADMIN_SUBMIT_FAILURE
 });
 
-
 export {
   getUsers,
   submitAdminRequest,

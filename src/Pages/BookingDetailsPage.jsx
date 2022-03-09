@@ -12,7 +12,7 @@ const BookingDetailsPage = ({Celebrity}) => {
             width:"100%",
             height:"auto",
             margin:"auto",
-            marginTop:"100px",
+            paddingTop:"100px",
         }}>
             <Box name="forBox" sx={{
                 background:"#1E1B1E",
