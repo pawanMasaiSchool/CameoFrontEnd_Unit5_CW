@@ -3,8 +3,33 @@ import Button from "@mui/material/Button"
 import AppleIcon from '@mui/icons-material/Apple';
 import ATagWithLink from "../Components/ATagWithLink";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CommonInputLabel from "../Components/CommonInputLabel";
+import CommonInput from "../Components/CommonInput";
 
+
+const initialDetails = {
+    username: "",
+    password: ""
+}
 const LoginPage = () => {
+    const [details,setDetails]= useState(initialDetails);
+
+    const {username, password} = details;
+
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        setDetails({...details, [name]:value })
+    };
+    
+    const handleClick = () => {
+        if(details.password.length <= 4){
+            alert("Password Must be of Minimum 5 Characters");
+            return
+        }
+        console.log("username",details.username, "Password",details.password);
+    }
+
     return (
         <Box sx={{
             background:"#101010",
@@ -52,49 +77,18 @@ const LoginPage = () => {
                     color:"white"
                 }}
                 >-------------------------- OR --------------------------</p>
-                <p style={{
-                    color:"white",
-                    textAlign:"left",
-                    fontWeight:"700",
-                    fontSize:"13px",
-                    padding:"0px 0px 0px 15px",
-                    margin:"20px 0px 10px 0px",
-                }}>Email or username</p>
-                <input style={{
-                    background:"#1E1B1E",
-                    width:"280px",
-                    borderRadius:"8px",
-                    height:"47px",
-                    borderWidth:"0px",
-                    border:"1px solid #413D40",
-                    color:"#413D40",
-                    padding:"0px 15px",
-                    fontSize:"16px"
-                }}
-                placeholder="you@example.com"
-                />
-                <p style={{
-                    color:"white",
-                    textAlign:"left",
-                    fontWeight:"700",
-                    fontSize:"13px",
-                    padding:"0px 0px 0px 15px",
-                    margin:"20px 0px 10px 0px",
-                }}>Password</p>
-                <input style={{
-                    background:"#1E1B1E",
-                    width:"280px",
-                    borderRadius:"8px",
-                    height:"47px",
-                    borderWidth:"0px",
-                    border:"1px solid #413D40",
-                    color:"#413D40",
-                    padding:"0px 15px",
-                    fontSize:"16px"
-                }}
-                placeholder="Password"
-                />
-                <Button variant="contained" sx={{
+                <CommonInputLabel label="Email or username" />
+                <CommonInput value={username} placeholder="you@example.com" name="username" onChange={handleInputChange} />
+
+
+                <CommonInputLabel label="Password" />
+                <CommonInput placeholder="Password" name="password" value={password} type="password" onChange={handleInputChange}  />
+                
+                
+                
+                <Button variant="contained" 
+                style={{
+                    cursor:"pointer",
                     textTransform:"none",
                     margin:"15px 0px 10px 0px",
                     width:"312px",
@@ -103,8 +97,15 @@ const LoginPage = () => {
                     color:"#101010",
                     background:"#45FFFF",
                     fontSize:"15px",
+                    borderWidth:"0px",
                     fontWeight:"600"
-                }}>Log in with email</Button>
+                }}
+
+                onClick={handleClick}
+                
+                >Log in with email</Button>
+
+
                 <p style={{
                     color:"#ADAEB5",
                     fontSize:"13.5px",

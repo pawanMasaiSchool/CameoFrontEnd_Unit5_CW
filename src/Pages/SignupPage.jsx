@@ -6,11 +6,33 @@ import { useState } from "react";
 import CommonInput from "../Components/CommonInput";
 import CommonInputLabel from "../Components/CommonInputLabel";
 
+const initDetails = {
+    full_name:"",
+    birthday:"",
+    email:"",
+    password:"",
+    invite_code:"",
+}
+
 const SignupPage = () => {
+
+    const [registerInfo, setRegisterInfo] = useState(initDetails);
+
+    const {full_name, birthday, email, password, invite_code} = registerInfo;
+
+    const handleInfoChange = (e) => {
+        let {name, value} = e.target;
+        setRegisterInfo({...registerInfo, [name]:value });
+    }
+
     const [checked, setChecked] = useState(true);
     const handleCheckChange = (event) => {
         setChecked(event.target.checked);
-      };
+    };
+
+    const handleSubmission = () => {
+        console.log(registerInfo);
+    }
 
     return (
         <Box sx={{
@@ -55,23 +77,27 @@ const SignupPage = () => {
                 }}
                 >--------------- Or continue with email ---------------</p>
                 
-                <CommonInputLabel label={"Full Name"} />
-                <CommonInput placeholder={"Pawan Sukhwani"} />
+                <CommonInputLabel label={"Full Name"}  />
+                <CommonInput placeholder={"Pawan Sukhwani"} value={full_name} name={"full_name"} onChange={handleInfoChange} />
                 
                 <CommonInputLabel label={"Birthday"} />
-                <CommonInput placeholder={"02/28/1994"} />
+                <CommonInput placeholder={"02/28/1994"} value={birthday} name={"birthday"} onChange={handleInfoChange} />
                 
                 <CommonInputLabel label={"Email"} />
-                <CommonInput placeholder={"pawan@masai.com"} />
+                <CommonInput placeholder={"pawan@masai.com"} value={email} name={"email"} onChange={handleInfoChange} />
                 
 
                 <CommonInputLabel label={"Password"} />
-                <CommonInput placeholder={"**********"} />
+                <CommonInput placeholder={"**********"} value={password} name={"password"} onChange={handleInfoChange} type="password" />
                 
-                <CommonInputLabel label={"Invite code(Optional)"} />
-                <CommonInput placeholder={"Invite code"} />
+                <CommonInputLabel label={"Invite code(Optional)"}  />
+                <CommonInput placeholder={"Invite code"} value={invite_code} name={"invite_code"} onChange={handleInfoChange} />
             
-                <Button variant="contained" sx={{
+                <Button variant="contained" 
+
+                onClick={handleSubmission}
+
+                sx={{
                     textTransform:"none",
                     margin:"15px 0px 10px 0px",
                     width:"312px",
@@ -95,9 +121,6 @@ const SignupPage = () => {
                     <Checkbox 
                         checked={checked}
                         onChange={handleCheckChange}
-                        sx={{
-
-                        }}
                     />
                     <p style={{
                         color:"#F3F4FE",

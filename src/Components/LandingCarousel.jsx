@@ -8,7 +8,7 @@ const LandingCarousel = () => {
   return (
     <Carousel
       autoPlay={true}
-      interval={5000}
+      interval={2500}
       infiniteLoop={true}
       showArrows={true}
       showStatus={false}
