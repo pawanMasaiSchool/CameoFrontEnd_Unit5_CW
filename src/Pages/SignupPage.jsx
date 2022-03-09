@@ -11,7 +11,7 @@ import axios from "axios";
 import { loginsuccess } from "../Redux/Login/action";
 
 const initDetails = {
-    full_name:"",
+    name:"",
     birthday:"",
     email:"",
     password:"",
@@ -22,7 +22,7 @@ const SignupPage = () => {
 
     const [registerInfo, setRegisterInfo] = useState(initDetails);
 
-    const {full_name, birthday, email, password, invite_code} = registerInfo;
+    const {name, birthday, email, password, invite_code} = registerInfo;
 
     const handleInfoChange = (e) => {
         let {name, value} = e.target;
@@ -49,12 +49,13 @@ const SignupPage = () => {
         window.open("http://localhost:5000/auth/facebook", "_self");
     }
     const signUpUser= async ()=>{
+        console.log(email,password,name,'inside async')
         return axios.post('http://localhost:5000/auth/signup', {
-             email,password,full_name
+             email,password,name
            })
      }
     const handleSubmission =()=>{
-        if(full_name===''){
+        if(name===''){
             alert('Name cannot be empty')
         }
         else if(email===''){
@@ -121,7 +122,7 @@ const SignupPage = () => {
                 >--------------- Or continue with email ---------------</p>
 
                 <CommonInputLabel label={"Full Name"}  />
-                <CommonInput placeholder={"Pawan Sukhwani"} value={full_name} name={"full_name"} onChange={handleInfoChange} />
+                <CommonInput placeholder={"Pawan Sukhwani"} value={name} name={"name"} onChange={handleInfoChange} />
                 
                 <CommonInputLabel label={"Birthday"} />
                 <CommonInput placeholder={"02/28/1994"} value={birthday} name={"birthday"} onChange={handleInfoChange} />
