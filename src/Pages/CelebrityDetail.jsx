@@ -23,7 +23,7 @@ export default function CelebrityDetail(){
     const [isLoading, setIsLoading]= useState(true)
     const [price,setPrice]= useState(null)
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/celebs/`+celeb_id)
+        return axios.get(`http://localhost:5000/celebs/celeb/`+celeb_id)
     }
     
     const handleFetch = async () => {

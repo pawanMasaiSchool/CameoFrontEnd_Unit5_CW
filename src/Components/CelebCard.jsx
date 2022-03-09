@@ -1,9 +1,14 @@
 import styling from "./CelebCard.module.css";
 import BoltIcon from "@mui/icons-material/Bolt";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const CelebCard = ({ name, profession, price, img_url }) => {
+const CelebCard = ({ name, profession, price, img_url,id }) => {
+  const history= useHistory()
+  const handleClick=()=>{
+    history.push(`/celeb/${id}`)
+  }
   return (
-    <div className={styling.outerDiv}>
+    <div className={styling.outerDiv} onClick={handleClick}>
       <div className={styling.imgDiv}>
         <img className={styling.innerImage} alt="imag" src={img_url} />
       </div>
