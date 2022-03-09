@@ -30,31 +30,29 @@ const SignupPage = () => {
     }
 
     const [checked, setChecked] = useState(true);
-    const history= useHistory()
-    const [email,setEmail]= useState('')
-    const dispatch= useDispatch()
-    const [password,setPassword]= useState('')
-    const [name,setName]= useState('')
-    const handleClickOnSignIn=()=>{
-        history.push('/login')
-    }
     const handleCheckChange = (event) => {
         setChecked(event.target.checked);
     };
 
-    const handleSubmission = () => {
-        console.log(registerInfo);
-      };
+
+    const history= useHistory()
+    const dispatch= useDispatch()
+    const handleClickOnSignIn=()=>{
+        history.push('/login')
+    }
+    
+
+
     const handleFacebookLogin = ()=>{
         window.open("http://localhost:5000/auth/facebook", "_self");
     }
     const signUpUser= async ()=>{
         return axios.post('http://localhost:5000/auth/signup', {
-             email,password,name
+             email,password,full_name
            })
      }
-    const handleSignUp =()=>{
-        if(name===''){
+    const handleSubmission =()=>{
+        if(full_name===''){
             alert('Name cannot be empty')
         }
         else if(email===''){
@@ -136,22 +134,6 @@ const SignupPage = () => {
                 <CommonInputLabel label={"Invite code(Optional)"}  />
                 <CommonInput placeholder={"Invite code"} value={invite_code} name={"invite_code"} onChange={handleInfoChange} />
 
-                <CommonInputLabel label={"Full Name"} />
-                <CommonInput placeholder={"Pawan Sukhwani"} value={name} handleChange={(e)=>{setName(e.target.value)}} type={'text'}/>
-                
-                <CommonInputLabel label={"Birthday"} />
-                <CommonInput placeholder={"02/28/1994"} type={'text'}/>
-                
-                <CommonInputLabel label={"Email"} />
-                <CommonInput placeholder={"pawan@masai.com"} value={email} handleChange={(e)=>{setEmail(e.target.value)}} type={'text'}/>
-                
-
-                <CommonInputLabel label={"Password"} />
-                <CommonInput placeholder={"**********"} value={password} handleChange={(e)=>{setPassword(e.target.value)}} type={'password'}/>
-                
-                <CommonInputLabel label={"Invite code(Optional)"} />
-                <CommonInput placeholder={"Invite code"}  type={'text'}/>
-
             
                 <Button variant="contained" 
 
@@ -167,7 +149,7 @@ const SignupPage = () => {
                     background:"#37AFB0",
                     fontSize:"15px",
                     fontWeight:"600"
-                }} onClick={handleSignUp}>Create your account</Button>
+                }}>Create your account</Button>
 
                 <p style={{
                     color:"#37AFB0",

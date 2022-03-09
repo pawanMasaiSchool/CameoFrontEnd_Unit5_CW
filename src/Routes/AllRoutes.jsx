@@ -1,6 +1,6 @@
 import { Switch } from "react-router-dom"
 import { Route } from "react-router-dom"
-import BookingPage from "../Pages/BookingPage"
+import BookingDetailsPage from "../Pages/BookingDetailsPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
@@ -53,7 +53,7 @@ const AllRoutes = () => {
             <br/><br/><br/><br/><br/><br/><h1>Following</h1><br/><br/><br/><br/><br/><br/>
             </PrivateRoute>
             <Route exact path="/book">
-                <BookingPage/>
+                <BookingDetailsPage />
             </Route>
             </Switch>
         </>
