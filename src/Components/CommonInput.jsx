@@ -1,6 +1,8 @@
 
 
+
 const CommonInput = ({placeholder, name, onChange, value, type}) => {
+
     return (
         <input style={{
             background:"#1E1B1E",
@@ -17,6 +19,9 @@ const CommonInput = ({placeholder, name, onChange, value, type}) => {
         name={name}
         onChange={onChange}
         placeholder={placeholder}
+        value={value}
+        onChange={handleChange}
+        type={type}
         />
     )
 }

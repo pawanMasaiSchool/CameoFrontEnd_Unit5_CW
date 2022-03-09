@@ -164,3 +164,24 @@
     padding: 15px 5px 0px 15px;
     margin: 0px;
 }
+
+.dropdown:hover .dropdownContent {
+    display: block;
+}
+
+.dropdownContent{
+    display: none;
+    position: absolute;
+    background-color: rgb(30, 27, 30);
+    min-width: 120px;
+    z-index: 1;
+    font-weight: 400;
+    top:60px;
+    right:35px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.loginMenu{
+    text-align: center;
+    padding: 15px 20px;
+}

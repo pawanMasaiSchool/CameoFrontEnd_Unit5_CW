@@ -2,8 +2,47 @@ import Box from "@mui/material/Box"
 import SearchSharpIcon from '@mui/icons-material/SearchSharp';
 import { Link } from "react-router-dom";
 import styling from "./Navbar.module.css"
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useState } from "react";
+import axios from "axios";
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { logoutsuccess } from "../Redux/Login/action";
 
 const Navbar = () => {
+    const isAuth= useSelector((state)=>state.login.isAuth)
+    const token= useSelector((state)=>state.login.token)
+    const dispatch= useDispatch()
+    const [profile,setProfile]=useState(null)
+    const [username,setUsername]= useState(null)
+    const fetchData = () => {
+        return axios.get(`http://localhost:5000/user/profile`,{
+            headers: {
+              'authorization': `Bearer ${token}`
+            }
+          })
+    }
+    const getUser=async ()=>{
+        try {
+            const {data} = await fetchData();
+            console.log(data)
+            setProfile(data.profile_picture)
+            setUsername(data.username)
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+    const handleLogout=()=>{
+        const action= logoutsuccess()
+        dispatch(action)
+        window.open("http://localhost:5000/auth/logout", "_self")
+    }
+    useEffect(()=>{
+        if(isAuth){
+            getUser()
+        }
+    },[isAuth])
     return (
         <Box sx={{
             position:"fixed",
@@ -210,8 +249,17 @@ const Navbar = () => {
                         }} placeholder="Search..." />
 
                     </Box>
-                    
-                    <Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
+                    { isAuth?
+                    <div style={{paddingTop:'7px',cursor:'pointer'}} className={styling.dropdown}>
+                        <img style={{width:'45px',height:'45px',borderRadius:'25px'}} src={profile}/> <ExpandMoreOutlinedIcon style={{paddingBottom:'10px'}}/>
+                        <div className={styling.dropdownContent}>
+                            <Link to={`/${username}/account`} style={{color:'white',textDecoration:'none'}}><div className={styling.loginMenu}>Account</div></Link>
+                            <Link to={`/${username}/orders`} style={{color:'white',textDecoration:'none'}}><div className={styling.loginMenu}>Orders</div></Link>
+                            <Link to={`/${username}/following`} style={{color:'white',textDecoration:'none'}}><div className={styling.loginMenu}>Following</div></Link>
+                            <div className={styling.loginMenu} onClick={handleLogout}>Logout</div>
+                        </div>
+                    </div>
+                    :<Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
                         <button style={{
                             background:"black",
                             cursor:"pointer",
@@ -230,7 +278,7 @@ const Navbar = () => {
                         }}>
                             Log In
                         </button>
-                    </Link>
+                    </Link>}
                 </Box>
         </Box>
     )

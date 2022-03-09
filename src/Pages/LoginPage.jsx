@@ -6,6 +6,12 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import CommonInputLabel from "../Components/CommonInputLabel";
 import CommonInput from "../Components/CommonInput";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+import { Construction } from "@mui/icons-material";
+import { useDispatch } from "react-redux";
+import { loginsuccess } from "../Redux/Login/action";
 
 
 const initialDetails = {
@@ -30,6 +36,30 @@ const LoginPage = () => {
         console.log("username",details.username, "Password",details.password);
     }
 
+    const [email,setEmail]= useState('')
+    const dispatch= useDispatch()
+    const history= useHistory()
+    const [password,setPassword]= useState('')
+    const handleFacebookLogin = ()=>{
+        window.open("http://localhost:5000/auth/facebook", "_self");
+    }
+    const loginUser= async ()=>{
+       return axios.post('http://localhost:5000/auth/signin', {
+            email,password
+          })
+    }
+    const handleLogin= ()=>{
+        loginUser()
+          .then(function (response) {
+            const {data}= response.data
+            const action= loginsuccess(data.token,data.user)
+        dispatch(action)
+            history.push('/')
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+    }
     return (
         <Box sx={{
             background:"#101010",
@@ -51,14 +81,14 @@ const LoginPage = () => {
                     fontSize:"30px",
                     color:"#FFFFFF"
                 }}>Log in to Cameo</h2>
-                <Button variant="contained" sx={{
+                <Button onClick={handleFacebookLogin} variant="contained" sx={{
                     width:"312px",
                     height:"47px",
                     padding:"10px 21px",
                     color:"#FFFFFF",
                     fontSize:"15px"
                 }}>Continue with Facebook</Button>
-                <Button variant="contained" sx={{
+                {/* <Button variant="contained" sx={{
                     textTransform:"none",
                     width:"312px",
                     height:"47px",
@@ -72,11 +102,12 @@ const LoginPage = () => {
                     }
                 }}>
                     <AppleIcon sx={{fontSize:"19px", marginBottom:"4px", marginRight:"5px"}} />
-                    Continue with Apple</Button>
+                    Continue with Apple</Button> */}
                 <p style={{
                     color:"white"
                 }}
                 >-------------------------- OR --------------------------</p>
+
                 <CommonInputLabel label="Email or username" />
                 <CommonInput value={username} placeholder="you@example.com" name="username" onChange={handleInputChange} />
 
@@ -89,6 +120,54 @@ const LoginPage = () => {
                 <Button variant="contained" 
                 style={{
                     cursor:"pointer",
+                <p style={{
+                    color:"white",
+                    textAlign:"left",
+                    fontWeight:"700",
+                    fontSize:"13px",
+                    padding:"0px 0px 0px 15px",
+                    margin:"20px 0px 10px 0px",
+                }}>Email or username</p>
+                <input style={{
+                    background:"#1E1B1E",
+                    width:"280px",
+                    borderRadius:"8px",
+                    height:"47px",
+                    borderWidth:"0px",
+                    border:"1px solid #413D40",
+                    color:"white",
+                    padding:"0px 15px",
+                    fontSize:"16px",
+                }}
+                placeholder="you@example.com"
+                value={email}
+                onChange={(e)=>setEmail(e.target.value)}
+                />
+                <p style={{
+                    color:"white",
+                    textAlign:"left",
+                    fontWeight:"700",
+                    fontSize:"13px",
+                    padding:"0px 0px 0px 15px",
+                    margin:"20px 0px 10px 0px",
+                }}>Password</p>
+                <input style={{
+                    background:"#1E1B1E",
+                    width:"280px",
+                    borderRadius:"8px",
+                    height:"47px",
+                    borderWidth:"0px",
+                    border:"1px solid #413D40",
+                    color:"white",
+                    padding:"0px 15px",
+                    fontSize:"16px"
+                }}
+                placeholder="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                type='password'
+                />
+                <Button variant="contained" sx={{
                     textTransform:"none",
                     margin:"15px 0px 10px 0px",
                     width:"312px",
@@ -105,7 +184,7 @@ const LoginPage = () => {
                 
                 >Log in with email</Button>
 
-
+                }} onClick={handleLogin}>Log in with email</Button>
                 <p style={{
                     color:"#ADAEB5",
                     fontSize:"13.5px",
