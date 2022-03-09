@@ -5,12 +5,55 @@ import { Checkbox } from "@mui/material";
 import { useState } from "react";
 import CommonInput from "../Components/CommonInput";
 import CommonInputLabel from "../Components/CommonInputLabel";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { loginsuccess } from "../Redux/Login/action";
 
 const SignupPage = () => {
     const [checked, setChecked] = useState(true);
+    const history= useHistory()
+    const [email,setEmail]= useState('')
+    const dispatch= useDispatch()
+    const [password,setPassword]= useState('')
+    const [name,setName]= useState('')
+    const handleClickOnSignIn=()=>{
+        history.push('/login')
+    }
     const handleCheckChange = (event) => {
         setChecked(event.target.checked);
       };
+    const handleFacebookLogin = ()=>{
+        window.open("http://localhost:5000/auth/facebook", "_self");
+    }
+    const signUpUser= async ()=>{
+        return axios.post('http://localhost:5000/auth/signup', {
+             email,password,name
+           })
+     }
+    const handleSignUp =()=>{
+        if(name===''){
+            alert('Name cannot be empty')
+        }
+        else if(email===''){
+            alert('Email cannot be empty')
+        }
+        else if(password.length<8){
+            alert('Password cannot be less than 8 characters')
+        }
+        else{
+            signUpUser()
+          .then(function (response) {
+            const {data}= response.data
+            const action= loginsuccess(data.token,data.user)
+        dispatch(action)
+            history.push('/')
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+        }
+    }
 
     return (
         <Box sx={{
@@ -46,7 +89,7 @@ const SignupPage = () => {
                     padding:"10px 21px",
                     color:"#FFFFFF",
                     fontSize:"15px"
-                }}>Continue with Facebook</Button>
+                }} onClick={handleFacebookLogin}>Continue with Facebook</Button>
                 
 
                 <p style={{
@@ -56,20 +99,20 @@ const SignupPage = () => {
                 >--------------- Or continue with email ---------------</p>
                 
                 <CommonInputLabel label={"Full Name"} />
-                <CommonInput placeholder={"Pawan Sukhwani"} />
+                <CommonInput placeholder={"Pawan Sukhwani"} value={name} handleChange={(e)=>{setName(e.target.value)}} type={'text'}/>
                 
                 <CommonInputLabel label={"Birthday"} />
-                <CommonInput placeholder={"02/28/1994"} />
+                <CommonInput placeholder={"02/28/1994"} type={'text'}/>
                 
                 <CommonInputLabel label={"Email"} />
-                <CommonInput placeholder={"pawan@masai.com"} />
+                <CommonInput placeholder={"pawan@masai.com"} value={email} handleChange={(e)=>{setEmail(e.target.value)}} type={'text'}/>
                 
 
                 <CommonInputLabel label={"Password"} />
-                <CommonInput placeholder={"**********"} />
+                <CommonInput placeholder={"**********"} value={password} handleChange={(e)=>{setPassword(e.target.value)}} type={'password'}/>
                 
                 <CommonInputLabel label={"Invite code(Optional)"} />
-                <CommonInput placeholder={"Invite code"} />
+                <CommonInput placeholder={"Invite code"}  type={'text'}/>
             
                 <Button variant="contained" sx={{
                     textTransform:"none",
@@ -81,13 +124,13 @@ const SignupPage = () => {
                     background:"#37AFB0",
                     fontSize:"15px",
                     fontWeight:"600"
-                }}>Create your account</Button>
+                }} onClick={handleSignUp}>Create your account</Button>
 
                 <p style={{
                     color:"#37AFB0",
                     cursor:"pointer",
                     
-                }}>Already have an account? Sign in</p>
+                }} onClick={handleClickOnSignIn}>Already have an account? Sign in</p>
 
                 <Box sx={{
                     display:"flex"
