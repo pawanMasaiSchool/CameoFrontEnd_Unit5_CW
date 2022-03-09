@@ -5,6 +5,10 @@ import { Checkbox } from "@mui/material";
 import { useState } from "react";
 import CommonInput from "../Components/CommonInput";
 import CommonInputLabel from "../Components/CommonInputLabel";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import axios from "axios";
+import { loginsuccess } from "../Redux/Login/action";
 
 const initDetails = {
     full_name:"",
@@ -30,8 +34,45 @@ const SignupPage = () => {
         setChecked(event.target.checked);
     };
 
-    const handleSubmission = () => {
-        console.log(registerInfo);
+
+    const history= useHistory()
+    const dispatch= useDispatch()
+    const handleClickOnSignIn=()=>{
+        history.push('/login')
+    }
+    
+
+
+    const handleFacebookLogin = ()=>{
+        window.open("http://localhost:5000/auth/facebook", "_self");
+    }
+    const signUpUser= async ()=>{
+        return axios.post('http://localhost:5000/auth/signup', {
+             email,password,full_name
+           })
+     }
+    const handleSubmission =()=>{
+        if(full_name===''){
+            alert('Name cannot be empty')
+        }
+        else if(email===''){
+            alert('Email cannot be empty')
+        }
+        else if(password.length<8){
+            alert('Password cannot be less than 8 characters')
+        }
+        else{
+            signUpUser()
+          .then(function (response) {
+            const {data}= response.data
+            const action= loginsuccess(data.token,data.user)
+        dispatch(action)
+            history.push('/')
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+        }
     }
 
     return (
@@ -68,7 +109,7 @@ const SignupPage = () => {
                     padding:"10px 21px",
                     color:"#FFFFFF",
                     fontSize:"15px"
-                }}>Continue with Facebook</Button>
+                }} onClick={handleFacebookLogin}>Continue with Facebook</Button>
                 
 
                 <p style={{
@@ -76,7 +117,7 @@ const SignupPage = () => {
                     fontSize:"16px"
                 }}
                 >--------------- Or continue with email ---------------</p>
-                
+
                 <CommonInputLabel label={"Full Name"}  />
                 <CommonInput placeholder={"Pawan Sukhwani"} value={full_name} name={"full_name"} onChange={handleInfoChange} />
                 
@@ -92,6 +133,7 @@ const SignupPage = () => {
                 
                 <CommonInputLabel label={"Invite code(Optional)"}  />
                 <CommonInput placeholder={"Invite code"} value={invite_code} name={"invite_code"} onChange={handleInfoChange} />
+
             
                 <Button variant="contained" 
 
@@ -113,7 +155,7 @@ const SignupPage = () => {
                     color:"#37AFB0",
                     cursor:"pointer",
                     
-                }}>Already have an account? Sign in</p>
+                }} onClick={handleClickOnSignIn}>Already have an account? Sign in</p>
 
                 <Box sx={{
                     display:"flex"

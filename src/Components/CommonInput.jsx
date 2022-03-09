@@ -13,11 +13,11 @@ const CommonInput = ({width="280px", height="47px",placeholder, name, onChange, 
             padding:"0px 15px",
             fontSize:"16px"
         }}
-        value={value}
         type={type}
         name={name}
         onChange={onChange}
         placeholder={placeholder}
+        value={value}
         />
     )
 }
