@@ -1,0 +1,54 @@
+.outerDiv {
+    background-color: #101010;
+    width: 230px;
+    height: 370px;
+    padding: 5px 0px 8px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.imgDiv {
+    overflow: hidden;
+    padding: 0px;
+    border-radius: 10px;
+    width: 210px;
+    height: 252px;
+}
+
+.innerImage {
+    border-radius: 10px;
+    transition: 0.5s;
+    width: 210px;
+    height: 252px;
+}
+
+.outerDiv:hover .innerImage {
+    transform: scale(1.1);
+    transition: 0.5s;
+}
+
+.celebName {
+    padding: 10px 0px 5px 10px;
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    text-align: left;
+}
+
+.profession {
+    padding: 5px 0px 0px 12px;
+    color: #bebbbf;
+    font-size: 15px;
+    text-align: left;
+    font-weight: 700;
+}
+
+.priceAndDeliveryDiv {
+    justify-content: space-between;
+    text-align: top;
+    display: flex;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 15px;
+}

@@ -3,6 +3,9 @@ import Button from "@mui/material/Button"
 import AppleIcon from '@mui/icons-material/Apple';
 import ATagWithLink from "../Components/ATagWithLink";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import CommonInputLabel from "../Components/CommonInputLabel";
+import CommonInput from "../Components/CommonInput";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -10,7 +13,29 @@ import { Construction } from "@mui/icons-material";
 import { useDispatch } from "react-redux";
 import { loginsuccess } from "../Redux/Login/action";
 
+
+const initialDetails = {
+    username: "",
+    password: ""
+}
 const LoginPage = () => {
+    const [details,setDetails]= useState(initialDetails);
+
+    const {username, password} = details;
+
+    const handleInputChange = (e) => {
+        const {name, value} = e.target;
+        setDetails({...details, [name]:value })
+    };
+    
+    const handleClick = () => {
+        if(details.password.length <= 4){
+            alert("Password Must be of Minimum 5 Characters");
+            return
+        }
+        console.log("username",details.username, "Password",details.password);
+    }
+
     const [email,setEmail]= useState('')
     const dispatch= useDispatch()
     const history= useHistory()
@@ -82,6 +107,19 @@ const LoginPage = () => {
                     color:"white"
                 }}
                 >-------------------------- OR --------------------------</p>
+
+                <CommonInputLabel label="Email or username" />
+                <CommonInput value={username} placeholder="you@example.com" name="username" onChange={handleInputChange} />
+
+
+                <CommonInputLabel label="Password" />
+                <CommonInput placeholder="Password" name="password" value={password} type="password" onChange={handleInputChange}  />
+                
+                
+                
+                <Button variant="contained" 
+                style={{
+                    cursor:"pointer",
                 <p style={{
                     color:"white",
                     textAlign:"left",
@@ -138,7 +176,14 @@ const LoginPage = () => {
                     color:"#101010",
                     background:"#45FFFF",
                     fontSize:"15px",
+                    borderWidth:"0px",
                     fontWeight:"600"
+                }}
+
+                onClick={handleClick}
+                
+                >Log in with email</Button>
+
                 }} onClick={handleLogin}>Log in with email</Button>
                 <p style={{
                     color:"#ADAEB5",

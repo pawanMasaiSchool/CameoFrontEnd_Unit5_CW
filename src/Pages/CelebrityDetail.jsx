@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Navbar from '../Components/Navbar';
 import styles from './CelebrityDetail.module.css'
 import StarBorderOutlinedIcon from '@mui/icons-material/StarBorderOutlined';
 import IosShareIcon from '@mui/icons-material/IosShare';
@@ -15,6 +14,8 @@ import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOu
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import CelebCarousel from "../Components/CelebCarousel";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+
+
 export default function CelebrityDetail(){
     const {celeb_id}= useParams()
     const [celeb,setCeleb]= useState(null)
@@ -23,12 +24,13 @@ export default function CelebrityDetail(){
     const fetchData = () => {
         return axios.get(`http://localhost:5000/celebs/`+celeb_id)
     }
+    
     const handleFetch = async () => {
         try {
             setIsLoading(true);
             const {data} = await fetchData();
             setCeleb(data)
-            console.log(data)
+            // console.log(data)
             setIsLoading(false);
             setPrice(celeb.price.personal)
         }

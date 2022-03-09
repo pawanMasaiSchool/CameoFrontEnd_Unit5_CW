@@ -10,7 +10,25 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 import { loginsuccess } from "../Redux/Login/action";
 
+const initDetails = {
+    full_name:"",
+    birthday:"",
+    email:"",
+    password:"",
+    invite_code:"",
+}
+
 const SignupPage = () => {
+
+    const [registerInfo, setRegisterInfo] = useState(initDetails);
+
+    const {full_name, birthday, email, password, invite_code} = registerInfo;
+
+    const handleInfoChange = (e) => {
+        let {name, value} = e.target;
+        setRegisterInfo({...registerInfo, [name]:value });
+    }
+
     const [checked, setChecked] = useState(true);
     const history= useHistory()
     const [email,setEmail]= useState('')
@@ -22,6 +40,10 @@ const SignupPage = () => {
     }
     const handleCheckChange = (event) => {
         setChecked(event.target.checked);
+    };
+
+    const handleSubmission = () => {
+        console.log(registerInfo);
       };
     const handleFacebookLogin = ()=>{
         window.open("http://localhost:5000/auth/facebook", "_self");
@@ -97,7 +119,23 @@ const SignupPage = () => {
                     fontSize:"16px"
                 }}
                 >--------------- Or continue with email ---------------</p>
+
+                <CommonInputLabel label={"Full Name"}  />
+                <CommonInput placeholder={"Pawan Sukhwani"} value={full_name} name={"full_name"} onChange={handleInfoChange} />
                 
+                <CommonInputLabel label={"Birthday"} />
+                <CommonInput placeholder={"02/28/1994"} value={birthday} name={"birthday"} onChange={handleInfoChange} />
+                
+                <CommonInputLabel label={"Email"} />
+                <CommonInput placeholder={"pawan@masai.com"} value={email} name={"email"} onChange={handleInfoChange} />
+                
+
+                <CommonInputLabel label={"Password"} />
+                <CommonInput placeholder={"**********"} value={password} name={"password"} onChange={handleInfoChange} type="password" />
+                
+                <CommonInputLabel label={"Invite code(Optional)"}  />
+                <CommonInput placeholder={"Invite code"} value={invite_code} name={"invite_code"} onChange={handleInfoChange} />
+
                 <CommonInputLabel label={"Full Name"} />
                 <CommonInput placeholder={"Pawan Sukhwani"} value={name} handleChange={(e)=>{setName(e.target.value)}} type={'text'}/>
                 
@@ -113,8 +151,13 @@ const SignupPage = () => {
                 
                 <CommonInputLabel label={"Invite code(Optional)"} />
                 <CommonInput placeholder={"Invite code"}  type={'text'}/>
+
             
-                <Button variant="contained" sx={{
+                <Button variant="contained" 
+
+                onClick={handleSubmission}
+
+                sx={{
                     textTransform:"none",
                     margin:"15px 0px 10px 0px",
                     width:"312px",
@@ -138,9 +181,6 @@ const SignupPage = () => {
                     <Checkbox 
                         checked={checked}
                         onChange={handleCheckChange}
-                        sx={{
-
-                        }}
                     />
                     <p style={{
                         color:"#F3F4FE",
