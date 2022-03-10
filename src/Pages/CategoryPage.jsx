@@ -1,8 +1,9 @@
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SubSortBox from "../Components/SubSortBox";
 import CelebCard from "../Components/CelebCard"
+import axios from "axios";
 
 
 const sorting = {
@@ -91,6 +92,22 @@ const CategoryPage = () => {
 
         setRatingFilter({...ratingFilter, [name]:checked});
     }
+
+    const [celebArray,setCelebArray] = useState([])
+    const fetchFromBack = () => {
+        return axios.get(`http://localhost:5000/celebs/sub_category?sub_category=Bollywood`);
+    }
+
+    const handleFetch = async () => {
+        let {data} = await fetchFromBack()
+        console.log(data);
+        setCelebArray(data)
+    }
+
+
+    useEffect(async ()=>{
+        await handleFetch()
+    },[])
 
 
     return (
@@ -269,7 +286,17 @@ const CategoryPage = () => {
                         margin:"10px 15px 20px 70px",
                         padding:"10px 5px 20px 0px"
                     }}>
-                        <CelebCard 
+                        {
+                            celebArray.map((item)=>{
+                               return <CelebCard
+                                name={`${item.name}`}
+                                profession={`${item.heading}`}
+                                price={`${item.price.personal}`}
+                                img_url={`${item.image_urls[0]}`}
+                                />
+                            })
+                        }
+                        {/* <CelebCard 
                         name="Shonali Nagrani"
                         profession="Bollywood Model/Actress"
                         price="150"
@@ -358,7 +385,7 @@ const CategoryPage = () => {
                         profession="Bollywood Model/Actress"
                         price="150"
                         img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
+                        /> */}
                     </Box>
             </Box>
             
