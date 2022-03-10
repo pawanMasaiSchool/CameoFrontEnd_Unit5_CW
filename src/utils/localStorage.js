@@ -5,18 +5,18 @@ export const loadData = (key) => {
     } catch (err) {
       return null;
     }
-  };
+};
   
-  export const saveData = (key, value) => {
+export const saveData = (key, value) => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
       return 1;
     } catch (err) {
       return -1;
     }
-  };
+};
 
-  export const removeData = (key)=>{
+export const removeData = (key)=>{
       try{
           localStorage.removeItem(key)
           return 1
@@ -24,4 +24,4 @@ export const loadData = (key) => {
       catch(err){
           return -1
       }
-  }
+}

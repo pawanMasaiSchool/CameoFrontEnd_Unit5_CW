@@ -1,6 +1,7 @@
 import { Switch } from "react-router-dom"
 import { Route } from "react-router-dom"
 import BookingDetailsPage from "../Pages/BookingDetailsPage"
+import CategoryPage from "../Pages/CategoryPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
@@ -37,8 +38,8 @@ const AllRoutes = () => {
             <Route exact path="/events">
             <br/><br/><br/><br/><h1>Events Page</h1><br/><br/><br/><br/><br/><br/>
             </Route>
-            <Route exact path="/categories">
-            <br/><br/><br/><br/><br/><br/><h1>Categories Page</h1><br/><br/><br/><br/><br/><br/>
+            <Route exact path="/categories/:cat_name">
+                <CategoryPage />
             </Route>
             <Route exact path="/celeb/:celeb_id">
                 <CelebrityDetail/>

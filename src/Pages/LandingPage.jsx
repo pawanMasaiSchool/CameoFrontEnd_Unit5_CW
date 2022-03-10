@@ -1,8 +1,8 @@
 import CelebCard from "../Components/CelebCard"
+import LandingCarousel from "../Components/LandingCarousel"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min"
-import LandingCarousel from "../Components/LandingCarousel"
 import { loginsuccess } from "../Redux/Login/action"
 
 const LandingPage = () => {

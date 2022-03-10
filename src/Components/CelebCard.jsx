@@ -10,7 +10,7 @@ const CelebCard = ({ name, profession, price, img_url }) => {
       <div className={styling.celebName}>{name}</div>
       <div className={styling.profession}>{profession}</div>
       <div className={styling.priceAndDeliveryDiv}>
-        <div style={{ paddingTop: "16px" }}>${price}+</div>
+        <div style={{ paddingTop: "16px" }}>₹{price}+</div>
         <div className={styling.priceAndDeliveryDiv}>
           <BoltIcon
             sx={{
