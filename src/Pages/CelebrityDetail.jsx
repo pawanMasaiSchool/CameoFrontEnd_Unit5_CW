@@ -13,17 +13,68 @@ import PhoneIphoneOutlinedIcon from '@mui/icons-material/PhoneIphoneOutlined';
 import VideoCameraFrontOutlinedIcon from '@mui/icons-material/VideoCameraFrontOutlined';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import CelebCarousel from "../Components/CelebCarousel";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 export default function CelebrityDetail(){
+    const isAuth= useSelector((state)=>state.login.isAuth)
+    const token= useSelector((state)=>state.login.token)
+    const history= useHistory()
     const {celeb_id}= useParams()
+    const [following,setFollowing]= useState(false)
     const [celeb,setCeleb]= useState(null)
     const [isLoading, setIsLoading]= useState(true)
     const [price,setPrice]= useState(null)
+    const addCelebToFollow=async ()=>{
+        let config = {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+          }
+          let data = {
+            celeb_id
+          }
+        return axios.patch('http://localhost:5000/user/following',data,config)
+    }
+    const removeCelebFromFollowing=async ()=>{
+        let config = {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+          }
+          let data = {
+            celeb_id
+          }
+          return axios.patch('http://localhost:5000/user/following/remove',data,config)
+    }
+    const handleFollowingClick=()=>{
+        removeCelebFromFollowing()
+        .then(function (response) {
+           console.log(response)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+        setFollowing(false)
+    }
+    const handleFollowClick= ()=>{
+        if(!isAuth){
+            history.push('/login')
+        }
+        addCelebToFollow()
+        .then(function (response) {
+           console.log(response)
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+          setFollowing(true)
+    }
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/celebs/`+celeb_id)
+        return axios.get(`http://localhost:5000/celebs/celeb/`+celeb_id)
     }
     
     const handleFetch = async () => {
@@ -33,13 +84,33 @@ export default function CelebrityDetail(){
             setCeleb(data)
             // console.log(data)
             setIsLoading(false);
-            setPrice(celeb.price.personal)
         }
         catch (error) {
             console.log(error);
         }
     }
+    const getfollowing= ()=>{
+        let config = {
+            headers: {
+                'authorization': `Bearer ${token}`
+            }
+          }
+        return axios.get(`http://localhost:5000/user/following`,config)
+    }
+    const checkFollowing= async ()=>{
+        const {data}= await getfollowing()
+        const follow_arr=data[0].following
+        console.log(follow_arr)
+        for(let i=0; i<follow_arr.length;i++){
+            if(follow_arr[i]==celeb_id){
+                setFollowing(true)
+            }
+        }
+    }
     useEffect(() => {
+        if(isAuth){
+            checkFollowing()
+        }
         handleFetch();
     },[]);
     if(isLoading){
@@ -58,15 +129,21 @@ export default function CelebrityDetail(){
                         <div style={{float:'left'}}><p style={{fontSize:'14px',fontWeight:'500',margin:'0',color:'rgba(190,187,191)',cursor:'pointer'}}>{celeb.sub_category1}</p></div>
                     </div>
                     <div className={styles.buttonSection}>
-                        <div style={{marginRight:'12px'}}>
-                            <div className={styles.fanClubButton}>
+                        {following?<div style={{marginRight:'12px'}}>
+                            <div className={styles.fanClubButton} onClick={handleFollowingClick}>
+                                <div style={{fontWeight:'700',fontSize:'16px',paddingTop:'10px',paddingBottom:'7px'}}>Following</div>
+                            </div>
+                        </div>:<div style={{marginRight:'12px'}}>
+                            <div className={styles.fanClubButton} onClick={handleFollowClick}>
                                 <div style={{fontWeight:'700',fontSize:'16px',paddingTop:'10px',paddingBottom:'7px'}}>Follow</div>
                             </div>
-                        </div>
+                        </div>}
                         <div style={{marginRight:'12px'}}>
+                        <CopyToClipboard text={`http://localhost:3000/celeb/${celeb_id}`}>
                             <div className={styles.iconBtn}>
                                 <IosShareIcon fontSize="small"/>
                             </div>
+                        </CopyToClipboard>
                         </div>
                     </div>
                 </div>
@@ -133,7 +210,7 @@ export default function CelebrityDetail(){
                         <div style={{backgroundColor:'rgb(255, 3, 124)',borderRadius:'10px',textAlign:'center',paddingTop:'16px',paddingBottom:'16px',cursor:'pointer'}}>
                             {price?
                             <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}}>Book now ₹{price}</div></Link>:
-                            <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}}>Book now</div></Link>}
+                            <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}} onClick={()=>setPrice(celeb.price.personal)}>Book now</div></Link>}
                         </div>
                     </div>
                 </div>
