@@ -259,7 +259,7 @@ const Navbar = () => {
                             <div className={styling.loginMenu} onClick={handleLogout}>Logout</div>
                         </div>
                     </div>
-                    :<Link to="login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
+                    :<Link to="/login" style={{textDecoration:"none", color:"white", margin:"1.5% 1% 1.5% 0%",}}>
                         <button style={{
                             background:"black",
                             cursor:"pointer",
