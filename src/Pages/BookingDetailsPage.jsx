@@ -233,7 +233,7 @@ const BookingDetailsPage = ({Celebrity}) => {
 
                 <Box sx={{display:"flex"}}>
                     <Checkbox sx={{color:"white"}} />
-                    <h3 style={{color:"white", fontWeight:"400"}}>{`Hide this video from ${Celebrity}'s profile`}</h3>
+                    <h3 style={{color:"white", fontWeight:"400"}}>{`Hide this video from profile`}</h3>
                 </Box>
 
                 <Box sx={{margin:"auto", width:"70%"}}>

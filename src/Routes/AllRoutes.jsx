@@ -1,5 +1,6 @@
 import { Switch } from "react-router-dom"
 import { Route } from "react-router-dom"
+import AccountPage from "../Pages/AccountPage"
 import BookingDetailsPage from "../Pages/BookingDetailsPage"
 import CategoryPage from "../Pages/CategoryPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
@@ -46,7 +47,7 @@ const AllRoutes = () => {
                 <CelebrityDetail/>
             </Route>
             <PrivateRoute exact={true} path="/:username/account">
-            <br/><br/><br/><br/><br/><br/><h1>Account</h1><br/><br/><br/><br/><br/><br/>
+            <AccountPage/>
             </PrivateRoute>
             <PrivateRoute exact={true} path="/:username/orders">
             <br/><br/><br/><br/><br/><br/><h1>Orders</h1><br/><br/><br/><br/><br/><br/>
