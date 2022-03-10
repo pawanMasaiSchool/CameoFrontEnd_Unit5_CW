@@ -16,6 +16,7 @@ import CelebCarousel from "../Components/CelebCarousel";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 
 export default function CelebrityDetail(){
@@ -138,9 +139,11 @@ export default function CelebrityDetail(){
                             </div>
                         </div>}
                         <div style={{marginRight:'12px'}}>
+                        <CopyToClipboard text={`http://localhost:3000/celeb/${celeb_id}`}>
                             <div className={styles.iconBtn}>
                                 <IosShareIcon fontSize="small"/>
                             </div>
+                        </CopyToClipboard>
                         </div>
                     </div>
                 </div>
