@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { addprice } from "../Redux/Order/action";
+import ReactPlayer from "react-player";
 
 
 export default function CelebrityDetail(){
@@ -130,7 +131,10 @@ export default function CelebrityDetail(){
         handleFetch();
     },[]);
     if(isLoading){
-        return <div>Loading...</div>
+        return(
+            <div style={{width:'50%',margin:'auto'}}>
+            <ReactPlayer url="https://i.imgur.com/257R6Nx.mp4" loop playing/></div>
+        )
     }
     else{
     return(

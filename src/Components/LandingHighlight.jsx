@@ -15,7 +15,6 @@ export default function LandingHighlight({title}){
     const handleFetch = async () => {
         try {
             const {data} = await fetchData();
-            console.log(data)
             setCelebs(data)
         }
         catch (error) {

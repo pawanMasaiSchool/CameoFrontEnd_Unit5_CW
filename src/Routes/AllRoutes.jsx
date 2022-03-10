@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import BookingDetailsPage from "../Pages/BookingDetailsPage"
 import CategoryPage from "../Pages/CategoryPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
+import Following from "../Pages/Following"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
 import SignupPage from "../Pages/SignupPage"
@@ -51,7 +52,7 @@ const AllRoutes = () => {
             <br/><br/><br/><br/><br/><br/><h1>Orders</h1><br/><br/><br/><br/><br/><br/>
             </PrivateRoute>
             <PrivateRoute exact={true} path="/:username/following">
-            <br/><br/><br/><br/><br/><br/><h1>Following</h1><br/><br/><br/><br/><br/><br/>
+            <Following/>
             </PrivateRoute>
             <Route exact path="/book/:celeb_id">
                 <BookingDetailsPage />
