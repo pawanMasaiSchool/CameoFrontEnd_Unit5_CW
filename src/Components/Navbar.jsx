@@ -25,7 +25,6 @@ const Navbar = () => {
     const getUser=async ()=>{
         try {
             const {data} = await fetchData();
-            console.log(data)
             setProfile(data.profile_picture)
             setUsername(data.username)
         }

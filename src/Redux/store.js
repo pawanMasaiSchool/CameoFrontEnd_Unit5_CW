@@ -3,11 +3,13 @@ import thunk from "redux-thunk";
 import { adminReducer } from "./Admin/AdminRedcuer";
 import CategoryReducer from "./Category/CategoryReducer";
 import LoginReducer from "./Login/LoginReducer";
+import OrderReducer from "./Order/OrderReducer";
 
 const rootReducer = combineReducers({
   login: LoginReducer,
   admin: adminReducer,
-  category: CategoryReducer
+  category: CategoryReducer,
+  order: OrderReducer
 });
 
 let composeEnhancers = compose;

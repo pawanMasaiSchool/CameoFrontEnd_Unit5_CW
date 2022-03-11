@@ -13,7 +13,6 @@ const LandingPage = () => {
         dispatch(action)
     }
     const location= useLocation()
-    console.log(location)
     useEffect(()=>{
         const q = new URLSearchParams(location.search)
         if(q.get("token")!==null){

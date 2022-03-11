@@ -15,8 +15,10 @@ import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import CelebCarousel from "../Components/CelebCarousel";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { addprice } from "../Redux/Order/action";
+import ReactPlayer from "react-player";
 
 
 export default function CelebrityDetail(){
@@ -28,6 +30,22 @@ export default function CelebrityDetail(){
     const [celeb,setCeleb]= useState(null)
     const [isLoading, setIsLoading]= useState(true)
     const [price,setPrice]= useState(null)
+    const dispatch= useDispatch()
+    const handleBookNow=()=>{
+        if(isAuth){
+            if(price!==null){
+                const action= addprice(price)
+                dispatch(action)
+                history.push(`/book/${celeb_id}`)
+            }
+            else{
+                setPrice(celeb.price.personal)
+            } 
+        }
+        else{
+            history.push('/login')
+        }       
+    }
     const addCelebToFollow=async ()=>{
         let config = {
             headers: {
@@ -100,7 +118,6 @@ export default function CelebrityDetail(){
     const checkFollowing= async ()=>{
         const {data}= await getfollowing()
         const follow_arr=data[0].following
-        console.log(follow_arr)
         for(let i=0; i<follow_arr.length;i++){
             if(follow_arr[i]==celeb_id){
                 setFollowing(true)
@@ -114,7 +131,10 @@ export default function CelebrityDetail(){
         handleFetch();
     },[]);
     if(isLoading){
-        return <div>Loading...</div>
+        return(
+            <div style={{width:'50%',margin:'auto'}}>
+            <ReactPlayer url="https://i.imgur.com/257R6Nx.mp4" loop playing/></div>
+        )
     }
     else{
     return(
@@ -209,8 +229,8 @@ export default function CelebrityDetail(){
                         </div>
                         <div style={{backgroundColor:'rgb(255, 3, 124)',borderRadius:'10px',textAlign:'center',paddingTop:'16px',paddingBottom:'16px',cursor:'pointer'}}>
                             {price?
-                            <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}}>Book now ₹{price}</div></Link>:
-                            <Link style={{textDecoration:"none", color:"white" }} to={`/book/${celeb_id}`}><div style={{fontSize:'17px',fontWeight:'700'}} onClick={()=>setPrice(celeb.price.personal)}>Book now</div></Link>}
+                            <div style={{fontSize:'17px',fontWeight:'700'}} onClick={handleBookNow}>Book now ₹{price}</div>:
+                            <div style={{fontSize:'17px',fontWeight:'700'}} onClick={handleBookNow}>Book now</div>}
                         </div>
                     </div>
                 </div>
