@@ -1,11 +1,13 @@
 import { combineReducers, createStore, compose, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { adminReducer } from "./Admin/AdminRedcuer";
+import CategoryReducer from "./Category/CategoryReducer";
 import LoginReducer from "./Login/LoginReducer";
 
 const rootReducer = combineReducers({
   login: LoginReducer,
-  admin: adminReducer
+  admin: adminReducer,
+  category: CategoryReducer
 });
 
 let composeEnhancers = compose;

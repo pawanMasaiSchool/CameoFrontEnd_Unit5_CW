@@ -4,33 +4,15 @@ import { useEffect, useState } from "react";
 import SubSortBox from "../Components/SubSortBox";
 import CelebCard from "../Components/CelebCard"
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { Delivery_24h, Business_Cameo, SortingFilter, PricingFilter, RatingFilter } from "../Redux/Category/action";
 
 
-const sorting = {
-    "Recommended": true,
-    "PriceHighToLow": "",
-    "PriceLowToHigh": "",
-    "NumberOfReviews": "",
-    "Newest": "",
-    "Alphabetical": "",
-}
-const pricing = {
-    "Zero_Hund":    false,
-    "Hund_TwoHund": "",
-    "TwoHund_ThrHund": "",
-    "ThrHund_FourHund":"",
-    "FourHund_FiveHund":"",
-    "FiveHundPlus":""
-}
-
-const rating = {
-    "Four" : false,
-    "Three":"",
-    "Two": "",
-    "One":"",
-}
 
 const CategoryPage = () => {
+    const {delivery_24,businessCameo, sortingFilter, pricingFilter, ratingFilter} = useSelector(state=>state.category);
+    const dispatch = useDispatch();
+    
     const [filter,setFilter] = useState(15);
     const [celebs, setCelebs] = useState(85);
     const handleFilterVisiblity = () => {
@@ -44,63 +26,48 @@ const CategoryPage = () => {
         }
     }
 
-    const [sortingFilter, setSortingFilter] = useState(sorting);
-
     const {Recommended, PriceHighToLow, PriceLowToHigh,NumberOfReviews,Newest,Alphabetical} = sortingFilter;
-
     const handleChangeInSortFilter = (e) => {
-        let {name,checked} = e.target;
-        let tempObj = sortingFilter;
-        for(let key in tempObj){
-            tempObj[key] = false;
-        }
-        setSortingFilter({...sortingFilter, [name]:checked});
+        let {name} = e.target;
+        const action = SortingFilter(name);
+        dispatch(action)
     }
 
-    const [delivery_24,setDelivery_24] = useState(false);
+
     const handleDeliveryChange = () => {
-        setDelivery_24(!delivery_24);
+        const action = Delivery_24h(!delivery_24);
+        dispatch(action);
     }
-    const [businessCameo,setBusinessCameo] = useState(false);
+    
     const handleBusinessCameoChange = () => {
-        setBusinessCameo(!businessCameo);
+        const action = Business_Cameo(!businessCameo);
+        dispatch(action);
     }
-
-    const [pricingFilter, setPricingFilter] = useState(pricing);
 
     const { Zero_Hund, Hund_TwoHund, TwoHund_ThrHund, ThrHund_FourHund,FourHund_FiveHund, FiveHundPlus } = pricingFilter;
 
     const handleChangeInPriceFilter = (e) => {
-        let {name,checked} = e.target;
-        let tempObj = pricingFilter;
-        for(let key in tempObj){
-            tempObj[key] = false;
-        }
-        setPricingFilter({...pricingFilter, [name]:checked});
+        let {name} = e.target;
+        const action = PricingFilter(name);
+        dispatch(action)
     }
-
-    const [ratingFilter, setRatingFilter] = useState(rating);
 
     const {Four, Three, Two, One} = ratingFilter;
 
     const handleChangeInRatingFilter = (e) => {
-        let {name,checked} = e.target;
-        let tempObj = ratingFilter;
-        for(let key in tempObj){
-            tempObj[key] = false;
-        }
-
-        setRatingFilter({...ratingFilter, [name]:checked});
+        let {name} = e.target;
+        const action = RatingFilter(name);
+        dispatch(action)
     }
+
+
 
     const [celebArray,setCelebArray] = useState([])
     const fetchFromBack = () => {
         return axios.get(`http://localhost:5000/celebs/sub_category?sub_category=Bollywood`);
     }
-
     const handleFetch = async () => {
         let {data} = await fetchFromBack()
-        console.log(data);
         setCelebArray(data)
     }
 

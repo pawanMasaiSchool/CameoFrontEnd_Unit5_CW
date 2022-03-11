@@ -80,7 +80,7 @@ const Navbar = () => {
                             <Box className={styling.fieldOfCategory}>
                                 <Link to="/cameo-calls" style={{textDecoration:"none", color:"white"}}>Actors</Link>
                                 <Box className={styling.smallerCategoriesBox}>
-                                    <p className={styling.detailedCate}>Bollywood</p>
+                                    <p className={styling.detailedCate}><Link style={{color:"white", textDecoration:"none"}} to="/categories/Bollywood"> Bollywood</Link></p>
                                     <p className={styling.detailedCate}>Hallmark</p>
                                     <p className={styling.detailedCate}>Broadway</p>
                                     <p className={styling.detailedCate}>Netflix</p>
