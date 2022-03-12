@@ -77,9 +77,9 @@ const Navbar = () => {
                     </Link>
                     <Box className={styling.allCategoryBox}>
                             <Box className={styling.fieldOfCategory}>
-                                <Link to="/cameo-calls" style={{textDecoration:"none", color:"white"}}>Actors</Link>
+                                <Link to="/categories/Actors" style={{textDecoration:"none", color:"white"}}>Actors</Link>
                                 <Box className={styling.smallerCategoriesBox}>
-                                    <p className={styling.detailedCate}><Link style={{color:"white", textDecoration:"none"}} to="/categories/Bollywood"> Bollywood</Link></p>
+                                    <p className={styling.detailedCate}>Bollywood</p>
                                     <p className={styling.detailedCate}>Hallmark</p>
                                     <p className={styling.detailedCate}>Broadway</p>
                                     <p className={styling.detailedCate}>Netflix</p>
@@ -94,7 +94,7 @@ const Navbar = () => {
                                 </Box>
                             </Box>
                             <Box className={styling.fieldOfCategory}>
-                                <Link to="/cameo-calls" style={{textDecoration:"none", color:"white"}}>Athletes</Link>
+                                <Link to="/categories/Athletes" style={{textDecoration:"none", color:"white"}}>Athletes</Link>
                                 <Box className={styling.smallerCategoriesBox}>
                                     <p className={styling.detailedCate}>Baseball</p>
                                     <p className={styling.detailedCate}>Lacrosse</p>

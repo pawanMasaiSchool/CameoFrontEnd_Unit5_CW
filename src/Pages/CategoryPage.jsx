@@ -6,13 +6,15 @@ import CelebCard from "../Components/CelebCard"
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { Delivery_24h, Business_Cameo, SortingFilter, PricingFilter, RatingFilter } from "../Redux/Category/action";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
 const CategoryPage = () => {
     const {delivery_24,businessCameo, sortingFilter, pricingFilter, ratingFilter} = useSelector(state=>state.category);
     const dispatch = useDispatch();
-    
+    const param= useParams()
+    console.log(param)
     const [filter,setFilter] = useState(15);
     const [celebs, setCelebs] = useState(85);
     const handleFilterVisiblity = () => {
@@ -64,7 +66,7 @@ const CategoryPage = () => {
 
     const [celebArray,setCelebArray] = useState([])
     const fetchFromBack = () => {
-        return axios.get(`http://localhost:5000/celebs/sub_category?sub_category=Bollywood`);
+        return axios.get(`http://localhost:5000/celebs/sub_category?sub_category=${param.cat_name}`);
     }
     const handleFetch = async () => {
         let {data} = await fetchFromBack()
