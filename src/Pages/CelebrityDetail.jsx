@@ -50,7 +50,12 @@ export default function CelebrityDetail(){
     const handleBookNow=()=>{
         if(isAuth){
             if(price!==null){
-                const action= addprice(price)
+                const payload={
+                    price:price,
+                    celeb_name: celeb.name,
+                    celeb_img:celeb.image_urls[0]
+                }
+                const action= addprice(payload)
                 dispatch(action)
                 history.push(`/book/${celeb_id}`)
             }

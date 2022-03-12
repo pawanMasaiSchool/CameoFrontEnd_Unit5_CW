@@ -7,7 +7,9 @@ const initOrder={
     instructions:"",
     optional:"",
     price:"",
-    celeb_id:""
+    celeb_id:"",
+    celeb_name:"",
+    celeb_img:""
 }
 const OrderReducer = (currentState = initOrder, action) => {
     switch (action.type) {
@@ -31,12 +33,16 @@ const OrderReducer = (currentState = initOrder, action) => {
             instructions:"",
             optional:"",
             price:"",
-            celeb_id:''
+            celeb_id:'',
+            celeb_name:"",
+            celeb_img:""
         }
       }
       case actionTypes.ADD_PRICE:{
           return{
-              ...currentState,price:action.payload
+              ...currentState,price:action.payload.price,
+              celeb_name:action.payload.celeb_name,
+              celeb_img: action.payload.celeb_img
           }
       }
       default:{

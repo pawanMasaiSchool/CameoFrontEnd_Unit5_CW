@@ -9,7 +9,7 @@ export const clearorder= ()=>({
     type:actionTypes.CLEAR_ORDER
 })
 
-export const addprice= (price)=>({
+export const addprice= (payload)=>({
     type: actionTypes.ADD_PRICE,
-    payload:price
+    payload
 })
