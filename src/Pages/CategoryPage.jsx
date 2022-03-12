@@ -76,7 +76,7 @@ const CategoryPage = () => {
 
     useEffect(async ()=>{
         await handleFetch()
-    },[])
+    },[param.cat_name])
 
 
     return (
