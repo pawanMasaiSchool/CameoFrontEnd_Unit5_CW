@@ -30,7 +30,8 @@ const OrderReducer = (currentState = initOrder, action) => {
             occassion:"",
             instructions:"",
             optional:"",
-            price:""
+            price:"",
+            celeb_id:''
         }
       }
       case actionTypes.ADD_PRICE:{

@@ -10,6 +10,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { createorder } from "../Redux/Order/action"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min"
+import { useHistory } from "react-router-dom"
 
 
 const initDetails = {
@@ -25,6 +26,7 @@ const BookingDetailsPage = ({Celebrity}) => {
     const params= useParams()
     const [orderInfo, setOrderInfo] = useState(initDetails)
     const {fore,from,occassion,instructions,optional}= orderInfo
+    const history= useHistory()
     const handleInfoChange = (e) => {
         let {name, value} = e.target;
         setOrderInfo({...orderInfo, [name]:value });
@@ -33,6 +35,7 @@ const BookingDetailsPage = ({Celebrity}) => {
         const payload= {fore,from,occassion,instructions,optional,celeb_id:params.celeb_id}
         const action= createorder(payload)
         dispatch(action)
+        history.push('/payment')
     }
     const isAuth= useSelector((state)=>state.login.isAuth)
     const token= useSelector((state)=>state.login.token)
@@ -49,7 +52,6 @@ const BookingDetailsPage = ({Celebrity}) => {
     const getUser=async ()=>{
         try {
             const {data} = await fetchData();
-            console.log(data)
             setProfile(data.profile_picture)
             setData(data)
         }
@@ -168,7 +170,7 @@ const BookingDetailsPage = ({Celebrity}) => {
                     </Box>}
 
                 <CommonInputLabel padding="0px 0px 0px 2px" fontSize="15px" label={"To (first name)"} />
-                <CommonInput placeholder="Pawan" width="80%" value={fore} name={"fore"} onChange={handleInfoChange}/>
+                <CommonInput placeholder="Leah" width="80%" value={fore} name={"fore"} onChange={handleInfoChange}/>
                 
                 <Box sx={{
                     padding:"0px 10px 10px 0px",
@@ -195,7 +197,7 @@ const BookingDetailsPage = ({Celebrity}) => {
                 
                 <h3 style={{textAlign:"center", color:"white"}}>2. Who is this Cameo from?</h3>
                 <CommonInputLabel padding="0px 0px 0px 2px" fontSize="15px" label="From (first name)" />
-                <CommonInput placeholder="Sukhwani" width="80%" value={from} name={"from"} onChange={handleInfoChange}/>
+                <CommonInput placeholder="Abhinav" width="80%" value={from} name={"from"} onChange={handleInfoChange}/>
                 
                 <Box sx={{
                     padding:"0px 10px 10px 0px",

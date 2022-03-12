@@ -260,6 +260,8 @@ const CategoryPage = () => {
                                 profession={`${item.heading}`}
                                 price={`${item.price.personal}`}
                                 img_url={`${item.image_urls[0]}`}
+                                key= {`${item.celeb_id}`}
+                                id={`${item.celeb_id}`}
                                 />
                             })
                         }

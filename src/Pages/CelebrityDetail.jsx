@@ -19,18 +19,34 @@ import { useDispatch, useSelector } from "react-redux";
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 import { addprice } from "../Redux/Order/action";
 import ReactPlayer from "react-player";
+import { Box, Modal } from "@mui/material";
 
+const style = {
+    position: 'absolute',
+    top: '90%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: '200px',
+    height:'30px',
+    bgcolor: '#FF037C',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+  };
 
 export default function CelebrityDetail(){
     const isAuth= useSelector((state)=>state.login.isAuth)
     const token= useSelector((state)=>state.login.token)
     const history= useHistory()
     const {celeb_id}= useParams()
+    const [copied,setCopied]= useState(false)
     const [following,setFollowing]= useState(false)
     const [celeb,setCeleb]= useState(null)
     const [isLoading, setIsLoading]= useState(true)
     const [price,setPrice]= useState(null)
     const dispatch= useDispatch()
+    const handleCopy= () => setCopied(true);
+    const handleClose = () => setCopied(false);
     const handleBookNow=()=>{
         if(isAuth){
             if(price!==null){
@@ -141,6 +157,15 @@ export default function CelebrityDetail(){
         <div style={{backgroundColor:'rgb(16,16,16)',width:'100%'}}>
             <div style={{maxWidth:'1080px',margin: '0 auto'}}>
                 <div className={styles.topbar} style={{paddingTop:'75px'}}>
+                <Modal
+        open={copied}
+        onClose={handleClose}
+        aria-labelledby="modal-title"
+      >
+        <Box sx={style}>
+        <h3 id="modal-title" style={{color:'white',margin:'5px 20px'}}>Link Copied!</h3>
+        </Box>
+      </Modal>
                     <div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',fontWeight:'500',margin:'0',cursor:'pointer'}}>Home</p></div>
                         <div style={{float:'left'}}><p style={{fontSize:'14px',color:'rgba(65,61,64)',fontWeight:'500',margin:'0 8px'}}>/</p></div>
@@ -158,7 +183,7 @@ export default function CelebrityDetail(){
                                 <div style={{fontWeight:'700',fontSize:'16px',paddingTop:'10px',paddingBottom:'7px'}}>Follow</div>
                             </div>
                         </div>}
-                        <div style={{marginRight:'12px'}}>
+                        <div style={{marginRight:'12px'}} onClick={handleCopy}>
                         <CopyToClipboard text={`http://localhost:3000/celeb/${celeb_id}`}>
                             <div className={styles.iconBtn}>
                                 <IosShareIcon fontSize="small"/>

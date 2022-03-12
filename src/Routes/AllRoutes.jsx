@@ -7,6 +7,7 @@ import CelebrityDetail from "../Pages/CelebrityDetail"
 import Following from "../Pages/Following"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
+import PaymentPage from "../Pages/PaymentPage"
 import SignupPage from "../Pages/SignupPage"
 import PrivateRoute from "./PrivateRoutes"
 
@@ -55,9 +56,12 @@ const AllRoutes = () => {
             <PrivateRoute exact={true} path="/:username/following">
             <Following/>
             </PrivateRoute>
-            <Route exact path="/book/:celeb_id">
+            <PrivateRoute exact={true} path="/book/:celeb_id">
                 <BookingDetailsPage />
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute exact={true} path="/payment">
+                <PaymentPage/>
+            </PrivateRoute>
             </Switch>
         </>
     )
