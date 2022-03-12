@@ -70,6 +70,21 @@ export default function PaymentPage(){
                     <div style={{marginRight:'73px'}}><CommonInput width="40px" placeholder='CVV'/></div>
                     </div>
                 </div>
+                <div style={{marginTop:'22px'}}>
+                <CommonInputLabel label="Summary" fontSize="20px"/>
+                <div style={{display:'flex',justifyContent:'space-between'}}>
+                    <div>
+                        <div><CommonInputLabel label="Cameo video" fontSize="18px"/></div>
+                        <div><CommonInputLabel label="Service fee" fontSize="18px"/></div>
+                        <div><CommonInputLabel label="Total" fontSize="20px"/></div>
+                    </div>
+                    <div style={{marginRight:'50px'}}>
+                        <div><CommonInputLabel label={`₹${order.price}`} fontSize="18px"/></div>
+                        <div><CommonInputLabel label={`₹${order.price*0.03}`} fontSize="18px"/></div>
+                        <div><CommonInputLabel label={`₹${(order.price*0.03)+order.price}`} fontSize="20px"/></div>
+                    </div>
+                </div>
+                </div>
                 <Box sx={{marginTop:'22px', width:"80%",marginLeft:'26px'}}>
                     <Button variant="contained" sx={{
                         background:"#FF037C", 
