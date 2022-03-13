@@ -1,12 +1,14 @@
 import {
     ADMIN_SUBMIT_FAILURE,
     ADMIN_SUBMIT_REQUEST,
-    ADMIN_SUBMIT_SUCCESS,
+    ADMIN_LOGIN_SUCCESS,
+    ADMIN_LOGOUT_SUCCESS,
 } from "./actionTypes";
 
 const initAstate = {
-    AisLoading: false,
-    AisError: false
+    isAdmin: false,
+    isAdminLoading: false,
+    isAdminError: false
 };
 
 export const adminReducer = (currentState = initAstate, action) => {
@@ -18,13 +20,21 @@ export const adminReducer = (currentState = initAstate, action) => {
             AisError: false
             };
         }
-        case ADMIN_SUBMIT_SUCCESS: {
+        case ADMIN_LOGIN_SUCCESS: {
             return {
-            ...currentState,
-            AisLoading: false,
-            AisError: false
+                isAdmin: true,
+                isAdminLoading: false,
+                isAdminError: false
             };
         }
+        case ADMIN_LOGOUT_SUCCESS: {
+            return {
+                isAdmin: false,
+                isAdminLoading: false,
+                isAdminError: false
+            };
+        }
+
         case ADMIN_SUBMIT_FAILURE: {
             return {
             ...currentState,
@@ -38,3 +48,6 @@ export const adminReducer = (currentState = initAstate, action) => {
         }
     }
 };
+
+
+export default adminReducer

@@ -1,6 +1,8 @@
 import { Switch } from "react-router-dom"
 import { Route } from "react-router-dom"
 import AccountPage from "../Pages/AccountPage"
+import AdminDashborad from "../Pages/AdminDashboard"
+import AdminLoginPage from "../Pages/AdminLoginPage"
 import BookingDetailsPage from "../Pages/BookingDetailsPage"
 import CategoryPage from "../Pages/CategoryPage"
 import CelebrityDetail from "../Pages/CelebrityDetail"
@@ -21,16 +23,16 @@ const AllRoutes = () => {
                 <LandingPage/>
             </Route>
             <Route exact path="/about">
-            <br/><br/><br/><br/><br/><br/><h1>About Page</h1><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><h1 style={{color:"white"}}>About Page</h1><br/><br/><br/><br/><br/><br/>
             </Route>
             <Route exact path="/business">
-            <br/><br/><br/><br/><br/><br/><h1>Business Page</h1><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><h1 style={{color:"white"}}>Business Page</h1><br/><br/><br/><br/><br/><br/>
             </Route>
             <Route exact path="/cameo-calls">
-            <br/><br/><br/><br/><br/><br/><h1>Cameo Calls</h1><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><h1 style={{color:"white"}}>Cameo Calls</h1><br/><br/><br/><br/><br/><br/>
             </Route>
             <Route exact path="/cameo-live">
-            <br/><br/><br/><br/><br/><br/><h1>Cameo Live</h1><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><h1 style={{color:"white"}}>Cameo Live</h1><br/><br/><br/><br/><br/><br/>
             </Route>
             <Route exact path="/login">
                 <LoginPage/>
@@ -39,7 +41,10 @@ const AllRoutes = () => {
                 <SignupPage />
             </Route>
             <Route exact path="/events">
-            <br/><br/><br/><br/><h1>Events Page</h1><br/><br/><br/><br/><br/><br/>
+            <br/><br/><br/><br/><br/><br/><h1 style={{color:"white"}}>Events</h1><br/><br/><br/><br/><br/><br/>
+            </Route>
+            <Route exact path="/categories">
+            <br/><br/><br/><br/><br/><br/><h1 style={{color:"white"}}>Category</h1><br/><br/><br/><br/><br/><br/>
             </Route>
             <Route exact path="/categories/:cat_name">
                 <CategoryPage />
@@ -62,6 +67,12 @@ const AllRoutes = () => {
             <PrivateRoute exact={true} path="/payment">
                 <PaymentPage/>
             </PrivateRoute>
+            <Route exact path="/admin/loginPage">
+                <AdminLoginPage />
+            </Route>
+            <Route exact path="/admin/dashboard">
+                <AdminDashborad />
+            </Route>
             </Switch>
         </>
     )

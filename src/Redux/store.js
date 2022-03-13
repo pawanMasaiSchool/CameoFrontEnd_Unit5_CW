@@ -9,7 +9,8 @@ const rootReducer = combineReducers({
   login: LoginReducer,
   admin: adminReducer,
   category: CategoryReducer,
-  order: OrderReducer
+  order: OrderReducer,
+  admin: adminReducer
 });
 
 let composeEnhancers = compose;
