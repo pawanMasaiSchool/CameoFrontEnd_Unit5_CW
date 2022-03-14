@@ -8,13 +8,17 @@ import { useState } from "react";
 import axios from "axios";
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { logoutsuccess } from "../Redux/Login/action";
+import { Redirect, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 
 const Navbar = () => {
-    const isAuth= useSelector((state)=>state.login.isAuth)
-    const token= useSelector((state)=>state.login.token)
-    const dispatch= useDispatch()
-    const [profile,setProfile]=useState(null)
-    const [username,setUsername]= useState(null)
+    const isAuth = useSelector((state)=>state.login.isAuth)
+    const token = useSelector((state)=>state.login.token)
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const [profile,setProfile] = useState(null)
+    const [username,setUsername] = useState(null)
     const fetchData = () => {
         return axios.get(`http://localhost:5000/user/profile`,{
             headers: {
@@ -37,6 +41,27 @@ const Navbar = () => {
         dispatch(action)
         window.open("http://localhost:5000/auth/logout", "_self")
     }
+
+    const [searchState, setSearchState] = useState("");
+    const [searchId, setSearchId] = useState('');
+
+    const fetchCeleb = () => {
+        return axios.get(`http://localhost:5000/celebs/search/${searchState}`)
+    }
+
+    const handleSearch = async () => {
+        let data;
+        data = await fetchCeleb();
+        if(data.length === 0){
+            alert("No such Celebrity Found");
+            return
+        }
+        const celebrity_id = data.data[0].celeb_id;
+        setSearchId(celebrity_id)
+        history.push(`celeb/${celebrity_id}`)
+    }
+
+
     useEffect(()=>{
         if(isAuth){
             getUser()
@@ -232,7 +257,9 @@ const Navbar = () => {
                             cursor:"pointer",
                             background:"white",
                             borderRadius:"20px 0px 0px 20px",
-                        }}>
+                        }}
+                        onClick={handleSearch}
+                        >
                             <SearchSharpIcon />
                         </button>
                         <input style={{
@@ -242,10 +269,14 @@ const Navbar = () => {
                             padding:"5px 5px 5px 10px",
                             fontSize:"16px",
                             fontWeight:"500",
-                            color:"#AEAFB6",
+                            color:"#000000",
                             borderRadius:"0px 20px 20px 0px",
                             borderWidth:"0px"
-                        }} placeholder="Search..." />
+                        }} 
+                        value={searchState}
+                        onChange={(e)=>{setSearchState(e.target.value)}}
+                        placeholder="Search..." 
+                        />
 
                     </Box>
                     { isAuth?

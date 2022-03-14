@@ -12,15 +12,16 @@ const AdminDashboard = () => {
     const {isAdmin} = useSelector(state=>state.admin);
     const handleAdminLogout = () => {
         const action = AdminLogoutSuccess();
-        dispatch(action)
+        dispatch(action);
     }
     
     const fetchCelebs = () => {
-        return axios.get(`http://localhost:5000/admin/celebs`)
+        return axios.get(`http://localhost:5000/admin/celebs`);
     }
 
-    const [celebs,setCelebs] = useState([])
+    const [celebs,setCelebs] = useState([]);
 
+    
     const getAllCelebs = async () => {
         const {data} = await fetchCelebs();
         setCelebs(data);
