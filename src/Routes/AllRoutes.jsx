@@ -9,6 +9,7 @@ import CelebrityDetail from "../Pages/CelebrityDetail"
 import Following from "../Pages/Following"
 import LandingPage from "../Pages/LandingPage"
 import LoginPage from "../Pages/LoginPage"
+import OrderPage from "../Pages/OrderPage"
 import PaymentPage from "../Pages/PaymentPage"
 import SignupPage from "../Pages/SignupPage"
 import PrivateRoute from "./PrivateRoutes"
@@ -56,7 +57,7 @@ const AllRoutes = () => {
             <AccountPage/>
             </PrivateRoute>
             <PrivateRoute exact={true} path="/:username/orders">
-            <br/><br/><br/><br/><br/><br/><h1>Orders</h1><br/><br/><br/><br/><br/><br/>
+            <OrderPage/>
             </PrivateRoute>
             <PrivateRoute exact={true} path="/:username/following">
             <Following/>
