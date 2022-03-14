@@ -12,7 +12,9 @@ import LoginPage from "../Pages/LoginPage"
 import OrderPage from "../Pages/OrderPage"
 import PaymentPage from "../Pages/PaymentPage"
 import SignupPage from "../Pages/SignupPage"
+import CelebrityLoginPage from "../Pages/CelebrityLoginPage"
 import PrivateRoute from "./PrivateRoutes"
+import CelebrityDashboard from "../Pages/CelebrityDashboard"
 
 
 
@@ -73,6 +75,12 @@ const AllRoutes = () => {
             </Route>
             <Route exact path="/admin/dashboard">
                 <AdminDashborad />
+            </Route>
+            <Route exact path="/celebrity/login">
+                <CelebrityLoginPage/>
+            </Route>
+            <Route exact path="/celebrity/:celeb_id/dashboard">
+                <CelebrityDashboard/>
             </Route>
             </Switch>
         </>
