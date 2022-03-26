@@ -23,7 +23,7 @@ const LandingPage = () => {
         <>
             <LandingCarousel />
             <LandingHighlight title='Featured'/>
-            <LandingHighlight title='Bollywoodddddddd'/>
+            <LandingHighlight title='Bollywood'/>
             <LandingHighlight title='Trending'/>
             <LandingHighlight title='Athletes'/>
         </>
