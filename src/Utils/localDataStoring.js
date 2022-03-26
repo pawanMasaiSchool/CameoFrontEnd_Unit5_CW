@@ -1,6 +1,6 @@
 const loadData = (key) => {
     try {
-      const value = JSON.parse(localStorage.getItem(key));
+      const value = JSON.parse(localStorage.getItem(key) );
       return value;
     } catch (err) {
       return null;
