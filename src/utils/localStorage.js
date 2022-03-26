@@ -1,4 +1,4 @@
-export const loadData = (key) => {
+const loadData = (key) => {
     try {
       const value = JSON.parse(localStorage.getItem(key));
       return value;
@@ -7,7 +7,7 @@ export const loadData = (key) => {
     }
 };
   
-export const saveData = (key, value) => {
+const saveData = (key, value) => {
     try {
       localStorage.setItem(key, JSON.stringify(value));
       return 1;
@@ -16,7 +16,7 @@ export const saveData = (key, value) => {
     }
 };
 
-export const removeData = (key)=>{
+const removeData = (key)=>{
       try{
           localStorage.removeItem(key)
           return 1
@@ -26,3 +26,4 @@ export const removeData = (key)=>{
       }
 }
 
+export {removeData, saveData, loadData}
