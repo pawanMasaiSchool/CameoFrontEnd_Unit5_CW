@@ -26,6 +26,7 @@ const LandingPage = () => {
             <LandingHighlight title='Bollywood'/>
             <LandingHighlight title='Trending'/>
             <LandingHighlight title='Athletes'/>
+            <LandingHighlight title='Athletes'/>
         </>
     )
 }
