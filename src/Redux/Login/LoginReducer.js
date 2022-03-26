@@ -1,6 +1,6 @@
 import {actionTypes} from "./actionTypes";
   
-import { loadData, removeData, saveData } from "../../Utils/localStorage.js";
+import { loadData, removeData, saveData } from "../../Utils/localDataStoring.js";
 
 const token = loadData("token") || null;
 
