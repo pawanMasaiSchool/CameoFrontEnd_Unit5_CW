@@ -43,7 +43,8 @@ const BookingDetailsPage = ({Celebrity}) => {
     const [data,setData]= useState(null)
     const [profile,setProfile]=useState("https://d3el26csp1xekx.cloudfront.net/static/icon.png?w=108&h=108")
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/user/detail`,{
+        // return axios.get(`http://localhost:5000/user/detail`,{    // when heroku link does not work we can run this on local host
+        return axios.get(`https://cameo-backend.herokuapp.com/user/detail`,{
             headers: {
               'authorization': `Bearer ${token}`
             }

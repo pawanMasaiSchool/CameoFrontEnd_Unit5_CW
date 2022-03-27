@@ -15,10 +15,14 @@ const LoginPage = () => {
     const history= useHistory()
     const [password,setPassword]= useState('')
     const handleFacebookLogin = ()=>{
-        window.open("http://localhost:5000/auth/facebook", "_self");
+        // window.open("http://localhost:5000/auth/facebook", "_self");
+        // when heroku link does not work we can run this on local host
+        window.open("https://cameo-backend.herokuapp.com/auth/facebook", "_self");
     }
     const loginUser= async ()=>{
-       return axios.post('http://localhost:5000/auth/signin', {
+    //    return axios.post('http://localhost:5000/auth/signin', {
+    // when heroku link does not work we can run this on local host
+       return axios.post('https://cameo-backend.herokuapp.com/auth/signin', {
             email,password
           })
     }

@@ -66,7 +66,9 @@ const CategoryPage = () => {
 
     const [celebArray,setCelebArray] = useState([])
     const fetchFromBack = () => {
-        return axios.get(`http://localhost:5000/celebs/sub_category?sub_category=${param.cat_name}`);
+        // when heroku link does not work we can run this on local host
+        // return axios.get(`http://localhost:5000/celebs/sub_category?sub_category=${param.cat_name}`);   
+        return axios.get(`https://cameo-backend.herokuapp.com/celebs/sub_category?sub_category=${param.cat_name}`);
     }
     const handleFetch = async () => {
         let {data} = await fetchFromBack()
@@ -267,96 +269,6 @@ const CategoryPage = () => {
                                 />
                             })
                         }
-                        {/* <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        />
-                        <CelebCard 
-                        name="Shonali Nagrani"
-                        profession="Bollywood Model/Actress"
-                        price="150"
-                        img_url="https://d31wcbk3iidrjq.cloudfront.net/VVIiX_Ijm_avatar-OrlzCZbOf.jpg?h=360&w=300&q=100" 
-                        /> */}
                     </Box>
             </Box>
             

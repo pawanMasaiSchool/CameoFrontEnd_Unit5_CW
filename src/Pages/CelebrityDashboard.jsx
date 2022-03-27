@@ -10,7 +10,9 @@ export default function CelebrityDashboard(){
     const [orders,setOrders]= useState([])
     
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/orders/celebrity/`+params.celeb_id)
+        // when heroku link does not work we can run this on local host
+        // return axios.get(`http://localhost:5000/orders/celebrity/`+params.celeb_id);
+        return axios.get(`https://cameo-backend.herokuapp.com/orders/celebrity/`+params.celeb_id);
     }
     
     const handleFetch = async () => {

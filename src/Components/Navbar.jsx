@@ -20,7 +20,10 @@ const Navbar = () => {
     const [profile,setProfile] = useState(null)
     const [username,setUsername] = useState(null)
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/user/profile`,{
+        // return axios.get(`http://localhost:5000/user/profile`,{
+        // when heroku link does not work we can run this on local host
+
+        return axios.get(`https://cameo-backend.herokuapp.com/user/profile`,{
             headers: {
               'authorization': `Bearer ${token}`
             }
@@ -39,14 +42,20 @@ const Navbar = () => {
     const handleLogout=()=>{
         const action= logoutsuccess()
         dispatch(action)
-        window.open("http://localhost:5000/auth/logout", "_self")
+        // window.open("http://localhost:5000/auth/logout", "_self");
+        // when heroku link does not work we can run this on local host
+
+        window.open("https://cameo-backend.herokuapp.com/auth/logout", "_self");
     }
 
     const [searchState, setSearchState] = useState("");
     const [searchId, setSearchId] = useState('');
 
     const fetchCeleb = () => {
-        return axios.get(`http://localhost:5000/celebs/search/${searchState}`)
+        // return axios.get(`http://localhost:5000/celebs/search/${searchState}`);
+        // when heroku link does not work we can run this on local host
+
+        return axios.get(`https://cameo-backend.herokuapp.com/celebs/search/${searchState}`);
     }
 
     const handleSearch = async () => {

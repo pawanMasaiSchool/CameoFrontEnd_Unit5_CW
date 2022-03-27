@@ -16,7 +16,8 @@ const AdminDashboard = () => {
     }
     
     const fetchCelebs = () => {
-        return axios.get(`http://localhost:5000/admin/celebs`);
+        // return axios.get(`http://localhost:5000/admin/celebs`);
+        return axios.get(`https://cameo-backend.herokuapp.com/admin/celebs`); // when heroku link does not work we can run this on local host
     }
 
     const [celebs,setCelebs] = useState([]);
@@ -28,7 +29,8 @@ const AdminDashboard = () => {
     }
 
     const sendDeleteRequest = (celeb_id) => {
-        return axios.delete(`http://localhost:5000/admin/celebs/${celeb_id}`)
+        // return axios.delete(`http://localhost:5000/admin/celebs/${celeb_id}`) // when heroku link does not work we can run this on local host
+        return axios.delete(`https://cameo-backend.herokuapp.com/admin/celebs/${celeb_id}`)
     }
 
     const handleDelete = async (e) => {

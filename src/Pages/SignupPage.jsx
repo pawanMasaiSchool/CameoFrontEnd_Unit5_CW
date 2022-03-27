@@ -46,11 +46,17 @@ const SignupPage = () => {
 
 
     const handleFacebookLogin = ()=>{
-        window.open("http://localhost:5000/auth/facebook", "_self");
+        // window.open("http://localhost:5000/auth/facebook", "_self");
+        // when heroku link does not work we can run this on local host
+        
+        window.open("https://cameo-backend.herokuapp.com/auth/facebook", "_self");
     }
     const signUpUser= async ()=>{
         console.log(email,password,name,'inside async')
-        return axios.post('http://localhost:5000/auth/signup', {
+        // return axios.post('http://localhost:5000/auth/signup', {
+        // when heroku link does not work we can run this on local host
+
+        return axios.post('https://cameo-backend.herokuapp.com/auth/signup', {
              email,password,name
            })
      }

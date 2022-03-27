@@ -7,7 +7,10 @@ export default function FollowingCard({id}){
     const [isLoading,setIsLoading]= useState(true)
     
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/celebs/celeb/`+id)
+        // return axios.get(`http://localhost:5000/celebs/celeb/`+id);
+        // when heroku link does not work we can run this on local host
+
+        return axios.get(`https://cameo-backend.herokuapp.com/celebs/celeb/`+id);
     }
     
     const handleFetch = async () => {

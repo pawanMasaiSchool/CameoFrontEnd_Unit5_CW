@@ -13,7 +13,10 @@ export default function CelebOrderCard({id,fore,from,instructions,additionalDeta
           let data = {
             id,video
           }
-        return axios.patch('http://localhost:5000/orders/video/edit',data)
+        // return axios.patch('http://localhost:5000/orders/video/edit',data);
+        // when heroku link does not work we can run this on local host
+
+        return axios.patch('https://cameo-backend.herokuapp.com/orders/video/edit',data);
     }
     const handleChange=(e)=>{
         setVideo(e.target.value)

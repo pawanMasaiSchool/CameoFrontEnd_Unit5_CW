@@ -15,7 +15,9 @@ export default function OrderPage(){
                 'authorization': `Bearer ${token}`
             }
           }
-        return axios.get(`http://localhost:5000/orders`,config)
+        // return axios.get(`http://localhost:5000/orders`,config);
+        // when heroku link does not work we can run this on local host
+        return axios.get(`https://cameo-backend.herokuapp.com/orders`,config);
     }
     const checkOrders= async ()=>{
         const {data}= await getOrders()

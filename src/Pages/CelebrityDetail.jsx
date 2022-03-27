@@ -76,7 +76,9 @@ export default function CelebrityDetail(){
           let data = {
             celeb_id
           }
-        return axios.patch('http://localhost:5000/user/following',data,config)
+        // return axios.patch('http://localhost:5000/user/following',data,config);  
+        // when heroku link does not work we can run this on local host
+        return axios.patch('https://cameo-backend.herokuapp.com/user/following',data,config);
     }
     const removeCelebFromFollowing=async ()=>{
         let config = {
@@ -87,7 +89,9 @@ export default function CelebrityDetail(){
           let data = {
             celeb_id
           }
-          return axios.patch('http://localhost:5000/user/following/remove',data,config)
+        // return axios.patch('http://localhost:5000/user/following/remove',data,config);
+        // when heroku link does not work we can run this on local host
+        return axios.patch('https://cameo-backend.herokuapp.com/user/following/remove',data,config);
     }
     const handleFollowingClick=()=>{
         removeCelebFromFollowing()
@@ -113,7 +117,10 @@ export default function CelebrityDetail(){
           setFollowing(true)
     }
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/celebs/celeb/`+celeb_id)
+        // return axios.get(`http://localhost:5000/celebs/celeb/`+celeb_id);
+        // when heroku link does not work we can run this on local host
+
+        return axios.get(`https://cameo-backend.herokuapp.com/celebs/celeb/`+celeb_id);
     }
     
     const handleFetch = async () => {
@@ -134,7 +141,10 @@ export default function CelebrityDetail(){
                 'authorization': `Bearer ${token}`
             }
           }
-        return axios.get(`http://localhost:5000/user/following`,config)
+        // return axios.get(`http://localhost:5000/user/following`,config);
+        // when heroku link does not work we can run this on local host
+        
+        return axios.get(`https://cameo-backend.herokuapp.com/user/following`,config);
     }
     const checkFollowing= async ()=>{
         const {data}= await getfollowing()

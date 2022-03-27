@@ -28,22 +28,24 @@ export default function AccountPage(){
     const [isLoading,setIsLoading]= useState(true)
     const history= useHistory()
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/user/detail`,{
-            headers: {
-              'authorization': `Bearer ${token}`
+        // return axios.get(`http://localhost:5000/user/detail`,{   // when heroku link does not work we can run this on local host
+            return axios.get(`https://cameo-backend.herokuapp.com/user/detail`,{
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
+            })
+        }
+        const addCelebToFollow=async ()=>{
+            let config = {
+                headers: {
+                    'authorization': `Bearer ${token}`
+                }
             }
-          })
-    }
-    const addCelebToFollow=async ()=>{
-        let config = {
-            headers: {
-                'authorization': `Bearer ${token}`
+            let data = {
+                name,twitter,bio
             }
-          }
-          let data = {
-            name,twitter,bio
-          }
-        return axios.patch('http://localhost:5000/user/detail',data,config)
+            // return axios.patch('http://localhost:5000/user/detail',data,config)    // when heroku link does not work we can run this on local host
+            return axios.patch('https://cameo-backend.herokuapp.com/user/detail',data,config)
     }
     const handleSave=()=>{
         addCelebToFollow()

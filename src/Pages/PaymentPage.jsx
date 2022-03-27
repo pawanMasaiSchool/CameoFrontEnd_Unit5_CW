@@ -33,7 +33,10 @@ export default function PaymentPage(){
             }
           }
           let data = payload
-        return axios.post('http://localhost:5000/orders/create',data,config)
+        // return axios.post('http://localhost:5000/orders/create',data,config);
+        // when heroku link does not work we can run this on local host
+
+        return axios.post('https://cameo-backend.herokuapp.com/orders/create',data,config);
     }
     const handleOpen = () => {
         setOpen(true)

@@ -15,7 +15,11 @@ export default function Following(){
                 'authorization': `Bearer ${token}`
             }
           }
-        return axios.get(`http://localhost:5000/user/following`,config)
+        // return axios.get(`http://localhost:5000/user/following`,config);
+        // when heroku link does not work we can run this on local host
+
+
+        return axios.get(`https://cameo-backend.herokuapp.com/user/following`,config);
     }
     const checkFollowing= async ()=>{
         const {data}= await getfollowing()

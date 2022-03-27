@@ -10,7 +10,10 @@ export default function LandingHighlight({title}){
     const carousel= useRef(null)
     const [celebs,setCelebs]=useState([])
     const fetchData = () => {
-        return axios.get(`http://localhost:5000/celebs/highlight?highlight=`+title)
+        // return axios.get(`http://localhost:5000/celebs/highlight?highlight=`+title);
+        // when heroku link does not work we can run this on local host
+
+        return axios.get(`https://cameo-backend.herokuapp.com/celebs/highlight?highlight=`+title);
     }
     const handleFetch = async () => {
         try {
