@@ -28,7 +28,7 @@ const AdminLoginPage = () => {
     }
 
     const handleAdminLogin = () => {
-        if(adminId === "pawan" && adminPassword === "12345"){
+        if(adminId === "pawanMasai" && adminPassword === "Masai12345"){
             const action = AdminLoginSuccess();
             dispatch(action)
             history.push("/admin/dashboard")

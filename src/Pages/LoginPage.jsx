@@ -38,6 +38,12 @@ const LoginPage = () => {
             console.log(error)
           })
     }
+    const handleAdminLogin = () =>{
+        history.push('/admin/loginpage');
+    }
+    const handleCelebrityLogin = () => {
+        history.push('/celebrity/login')
+    }
     return (
         <Box sx={{
             background:"#101010",
@@ -143,6 +149,28 @@ const LoginPage = () => {
                     fontSize:"15px",
                     fontWeight:"600"
                 }} onClick={handleLogin}>Log in with email</Button>
+                <Button variant="contained" sx={{
+                    textTransform:"none",
+                    margin:"15px 10px 10px 0px",
+                    width:"150px",
+                    height:"47px",
+                    padding:"10px 21px",
+                    color:"#101010",
+                    background:"#45FFFF",
+                    fontSize:"15px",
+                    fontWeight:"600"
+                }} onClick={handleAdminLogin}>Admin Login</Button>
+                <Button variant="contained" sx={{
+                    textTransform:"none",
+                    margin:"15px 0px 10px 0px",
+                    width:"175px",
+                    height:"47px",
+                    padding:"10px 21px",
+                    color:"#101010",
+                    background:"#45FFFF",
+                    fontSize:"15px",
+                    fontWeight:"600"
+                }} onClick={handleCelebrityLogin}>Celebrity Login</Button>
                 <p style={{
                     color:"#ADAEB5",
                     fontSize:"13.5px",
