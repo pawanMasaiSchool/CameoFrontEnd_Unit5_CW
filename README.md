@@ -1,3 +1,9 @@
+<h3>This repo is of the front-end code of clone of Cameo.com using React library as a front-end framework.</h3>
+  
+<h3>Cameo.com is a Celebrity shout-out application where users can get shout-outs from their favourite celebrities from different categories like Actors, Athelets,Musicians, Comedians, and Politics etc. on various occasions like birthdays, pep-talks, anniversaries etc. by paying the required amount to the celebrity.</h3>
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
